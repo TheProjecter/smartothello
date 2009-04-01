@@ -1,7 +1,7 @@
 #import <Foundation/NSObject.h>
 
-const int BOARD_MAX_X = 8;
-const int BOARD_MAX_Y = 8;
+#define BOARD_MAX_X 8
+#define BOARD_MAX_Y 8 
 
 
 @interface BoardInterface: NSObject {

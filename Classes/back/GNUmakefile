@@ -3,7 +3,7 @@
 INCPATH:=-I/usr/local/include
 LIBPATH:=-L/usr/local/lib
 
-LIBS:=-lobjc
+LIBS:=-lobjc -lgnustep-base
 
 SRCS:=BoardBasicImplementation.m
 
