@@ -1,7 +1,7 @@
 #import "BoardBasicImplementation.h"
 
 
-@implementation BoardBasiceImplementation 
+@implementation BoardBasicImplementation 
 - (BoardInterface*) init {
    BoardInterface *intf = [super init];
    int i, j;
@@ -13,9 +13,9 @@
    Board[3][3] = Board[4][4] = kWhite;
    Board[3][4] = Board[4][3] = kBlack;
 }
-- (enum MoveResult) flipOneDirectionFrom: (int) X : (int) Y 
+- (enum BoardMoveResult) flipOneDirectionFrom: (int) X : (int) Y 
                                  AtDelta: (int) deltaX : (int) deltaY {
-   enum CellStatus expectedStatus, origStatus = Board[X][Y];
+   enum BoardCellStatus expectedStatus, origStatus = Board[X][Y];
    int curX, curY;
    if(kWhite == origStatus) {
       expectedStatus = kBlack;
@@ -39,7 +39,7 @@
       }
    }
 }
-- (enum MoveResult) put:(BOOL) isBlack At: (int) X And: (int) Y {
+- (enum BoardMoveResult) put:(BOOL) isBlack At: (int) X : (int) Y {
    BOOL isChanged = FALSE;
    if(kSpace != Board[X][Y]) {
       return kOccupied;
@@ -79,6 +79,9 @@
    } else {
       return kSuccess; 
    }
+}
+- (enum BoardCellStatus) getStatusAt:(int) X : (int) Y {
+   return Board[X][Y]; 
 }
 
 @end
