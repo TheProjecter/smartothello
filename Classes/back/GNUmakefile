@@ -1,13 +1,32 @@
 .PHONY: all clean
 
+ifeq ($(shell uname),Darwin)
+PLATFORM:=mac
+else
+PLATFORM:=gnu
+endif
+
 INCPATH:=-I/usr/local/include
 LIBPATH:=-L/usr/local/lib
 
-LIBS:=-lobjc -lgnustep-base
+LIBS:=-lobjc 
+ifeq ($(PLATFORM),gnu)
+LIBS+=-lgnustep-base
+endif
 
-SRCS:=BoardBasicImplementation.m
+ifeq ($(PLATFORM),mac)
+LIBS+=-framework Foundation
+endif
+
+SRCS:= BoardBasicImplementation.m \
+	BoardInterface.m \
+	TestBasicBoard.m
 
 OBJS:=$(SRCS:.m=.o)
+
+DEPS:=$(SRCS:.m=.d)
+
+TARGET:=TestBasicBoard
 
 GCC:=gcc
 RM:=rm -rf
@@ -15,13 +34,19 @@ RM:=rm -rf
 OBJC:=$(GCC) $(INCPATH) 
 LINK:=$(GCC) $(LIBPATH) $(LIBS)
 
-all: main.exe
+
+all: $(TARGET)
+
+%.d: %.m
+	@$(OBJC) $^ -MM > $@
 
 %.o: %.m
-	$(OBJC) $^ -c -o $@
+	$(OBJC) $< -c -o $@
 
-main.exe: $(OBJS)
+$(TARGET): $(OBJS)
 	$(LINK) $^ -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(DEPS) $(TARGET)
+
+-include $(DEPS)
