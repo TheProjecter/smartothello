@@ -13,7 +13,8 @@
    Board[3][3] = Board[4][4] = kWhite;
    Board[3][4] = Board[4][3] = kBlack;
 }
-- (enum MoveResult) flipOneDirectionFrom:(int) X And: (int) Y At: (int) deltaX And: (int) deltaY {
+- (enum MoveResult) flipOneDirectionFrom: (int) X : (int) Y 
+                                 AtDelta: (int) deltaX : (int) deltaY {
    enum CellStatus expectedStatus, origStatus = Board[X][Y];
    int curX, curY;
    if(kWhite == origStatus) {
@@ -48,28 +49,28 @@
    } else {
       Board[X][Y] = kWhite; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: 1 And: 1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: 1 : 1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: 1 And: -1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: 1 : -1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: -1 And: 1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: -1 : 1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: -1 And: -1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: -1 : -1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: 0 And: 1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: 0 : 1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: 0 And: -1] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: 0 : -1] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: 1 And: 0] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: 1 : 0] == kSuccess) {
       isChanged = TRUE; 
    }
-   if([self flipOneDirectionFrom: X And: Y At: -1 And: 0] == kSuccess) {
+   if([self flipOneDirectionFrom: X : Y AtDelta: -1 : 0] == kSuccess) {
       isChanged = TRUE; 
    }
    if(!isChanged) {
