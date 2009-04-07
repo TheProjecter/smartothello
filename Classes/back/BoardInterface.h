@@ -1,24 +1,40 @@
-#import <Foundation/NSObject.h>
-
 #define BOARD_MAX_X 8
 #define BOARD_MAX_Y 8 
 
 
 enum BoardCellStatus{
-   kSpace,
-   kBlack,
-   kWhite
+   kSpace = 0,
+   kBlack = -1,
+   kWhite = 1
 };
 
 enum BoardMoveResult {
-   kSuccess,
+   kAvailable,
    kOccupied,
    kChangeNone
 };
 
-@interface BoardInterface: NSObject {
-}
--(enum BoardCellStatus) getStatusAt:(int) X : (int) Y;
--(enum BoardMoveResult) put:(BOOL) isBlack 
-                         At: (int) X : (int) Y;
+@protocol BoardInterface
+
+-(int) BlackCount;
+-(int) WhiteCount;
+-(int) EmptyCount;
+-(int) BlackFrontierCount;
+-(int) WhiteFrontierCount;
+-(int) BlackSafeCount;
+-(int) WhiteSafeCount;
+-(void) ResetBoard;
+
+-(enum BoardCellStatus) GetCellStatus: (int) X : (int) Y;
+-(BOOL) IsDiscSafe: (int) X: (int) Y;
+
+/**
+ * It doesn't check if the move is valid
+ */
+-(void) MakeMove: (BOOL) isBlack
+              At: (int) X : (int) Y;
+-(BOOL) HasValidMove: (BOOL) isBlack;
+-(enum BoardMoveResult) IsValidMove: (BOOL) isBlack
+                 At: (int) X : (int) Y;
+-(int) GetValidMoveCount: (BOOL) isBlack;
 @end

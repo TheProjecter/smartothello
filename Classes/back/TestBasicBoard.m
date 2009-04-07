@@ -3,7 +3,7 @@
 
 
 int main(void) {
-   BoardInterface *board = [[BoardBasicImplementation alloc] init];
+   BoardBasicImplementation *board = [[BoardBasicImplementation alloc] init];
    int X, Y;
    BOOL isBlack = TRUE;
    enum BoardMoveResult result;
@@ -20,22 +20,25 @@ int main(void) {
          scanf("%d", &X);
          printf("Col: "); fflush(stdout);
          scanf("%d", &Y);
-         result = [board put: isBlack
-                          At: X : Y];
+         result = [board IsValidMove: isBlack
+                                  At: X : Y];
          if (result == kChangeNone) {
             printf("Change Nothing! Re-input\n"); fflush(stdout);
          } else if (result == kOccupied) {
             printf("This position is occupied\n"); fflush(stdout);
+         } else {
+            [board MakeMove: isBlack
+                         At: X : Y];
          }
-      } while (kSuccess != result);
+      } while (kAvailable != result);
       isBlack = !isBlack;
       for(Y=0; Y < BOARD_MAX_Y; Y++) {
          for(X=0; X < BOARD_MAX_X; X++) {
-            if(kSpace == [board getStatusAt: X : Y]) {
+            if(kSpace == [board GetCellStatus: X : Y]) {
                printf("-");
-            } else if(kWhite == [board getStatusAt: X : Y]) {
+            } else if(kWhite == [board GetCellStatus: X : Y]) {
                printf("O");
-            } else if(kBlack == [board getStatusAt: X : Y]) {
+            } else if(kBlack == [board GetCellStatus: X : Y]) {
                printf("X");
             }
          }

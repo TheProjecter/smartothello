@@ -19,7 +19,6 @@ LIBS+=-framework Foundation
 endif
 
 SRCS:= BoardBasicImplementation.m \
-	BoardInterface.m \
 	TestBasicBoard.m
 
 OBJS:=$(SRCS:.m=.o)
