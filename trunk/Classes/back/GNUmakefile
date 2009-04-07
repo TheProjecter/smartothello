@@ -32,7 +32,7 @@ GCC:=gcc
 RM:=rm -rf
 
 OBJC:=$(GCC) $(INCPATH) 
-LINK:=$(GCC) $(LIBPATH) $(LIBS)
+LINK:=$(GCC) $(LIBPATH)
 
 
 all: $(TARGET)
@@ -44,7 +44,7 @@ all: $(TARGET)
 	$(OBJC) $< -c -o $@
 
 $(TARGET): $(OBJS)
-	$(LINK) $^ -o $@
+	$(LINK) $^ -o $@ $(LIBS)
 
 clean:
 	$(RM) $(OBJS) $(DEPS) $(TARGET)

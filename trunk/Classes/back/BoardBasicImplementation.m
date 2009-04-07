@@ -2,7 +2,7 @@
 
 
 @implementation BoardBasicImplementation 
-- (BoardInterface*) init {
+- (id) init {
    BoardInterface *intf = [super init];
    int i, j;
    for(i = 0; i < BOARD_MAX_X; i++) {
