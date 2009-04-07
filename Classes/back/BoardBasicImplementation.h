@@ -4,7 +4,7 @@
    @private
       enum BoardCellStatus Board[BOARD_MAX_X][BOARD_MAX_Y];
 }
-- (BoardInterface*) init;
+- (id) init;
 
 - (enum BoardMoveResult) put: (BOOL) isBlack 
                      At: (int) X : (int) Y;
