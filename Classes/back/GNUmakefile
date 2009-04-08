@@ -51,6 +51,6 @@ clean:
 	$(RM) $(OBJS) $(DEPS) $(TARGET)
 
 debug:
-	$(MAKE) all "CFLAGS=-g -O3 -DDEBUG"
+	$(MAKE) all "CFLAGS=-g -O0 -DDEBUG"
 
 -include $(DEPS)

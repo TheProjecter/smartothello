@@ -62,6 +62,8 @@
          SafeDiscs[x][y] = FALSE;
       }
    }
+   Board[3][3] = Board[4][4] =  kWhite;
+   Board[3][4] = Board[4][3] =  kBlack;
    [self UpdateCounts];
 }
 
@@ -120,7 +122,7 @@
                                  At: (int) X : (int) Y 
 {
    int dX, dY;
-   if(Board[X][Y] == kSpace) {
+   if(Board[X][Y] != kSpace) {
       return kOccupied;
    }
    for(dX = -1; dX <= 1; dX++) {
@@ -189,7 +191,7 @@
          for (j = 0; j < BOARD_MAX_Y; j++) {
             if(Board[i][j] != kSpace
                   && !SafeDiscs[i][j]
-                  && [self IsOutFlankiable: i :j]) {
+                  && [self IsOutFlankable: i :j]) {
                SafeDiscs[i][j] = TRUE;
                statusChanged = TRUE;
             }
@@ -238,7 +240,7 @@
    }
 }
 
--(BOOL) IsOutFlankiable: (int) X : (int) Y {
+-(BOOL) IsOutFlankable: (int) X : (int) Y {
    int color = Board[X][Y];
    int i, j;
    BOOL hasSpaceSide1 = FALSE, hasSpaceSide2 = FALSE;

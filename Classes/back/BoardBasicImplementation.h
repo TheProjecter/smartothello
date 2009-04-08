@@ -43,5 +43,5 @@
 -(BOOL) IsOutFlanking: (BOOL) isBlack
                    At: (int) X : (int) Y
                 Delta: (int) dX : (int) dY;
--(BOOL) IsOutFlankiable: (int) X : (int) Y;
+-(BOOL) IsOutFlankable: (int) X : (int) Y;
 @end
