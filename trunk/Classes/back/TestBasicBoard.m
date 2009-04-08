@@ -8,6 +8,18 @@ int main(void) {
    BOOL isBlack = TRUE;
    enum BoardMoveResult result;
    while(1) {
+      for(X=0; X < BOARD_MAX_X; X++) {
+         for(Y=0; Y < BOARD_MAX_Y; Y++) {
+            if(kSpace == [board GetCellStatus: X : Y]) {
+               printf("-");
+            } else if(kWhite == [board GetCellStatus: X : Y]) {
+               printf("O");
+            } else if(kBlack == [board GetCellStatus: X : Y]) {
+               printf("X");
+            }
+         }
+         printf("\n"); fflush(stdout);
+      }
       if(isBlack) {
          printf("Black"); fflush(stdout);
       } else {
@@ -32,18 +44,6 @@ int main(void) {
          }
       } while (kAvailable != result);
       isBlack = !isBlack;
-      for(Y=0; Y < BOARD_MAX_Y; Y++) {
-         for(X=0; X < BOARD_MAX_X; X++) {
-            if(kSpace == [board GetCellStatus: X : Y]) {
-               printf("-");
-            } else if(kWhite == [board GetCellStatus: X : Y]) {
-               printf("O");
-            } else if(kBlack == [board GetCellStatus: X : Y]) {
-               printf("X");
-            }
-         }
-         printf("\n"); fflush(stdout);
-      }
    }
    [board release];
    return 0;
