@@ -1,4 +1,4 @@
-.PHONY: all clean
+.PHONY: all clean debug
 
 ifeq ($(shell uname),Darwin)
 PLATFORM:=mac
@@ -33,19 +33,24 @@ RM:=rm -rf
 OBJC:=$(GCC) $(INCPATH) 
 LINK:=$(GCC) $(LIBPATH)
 
+OBJCFLAGS+=$(CFLAGS)
+
 
 all: $(TARGET)
 
 %.d: %.m
-	@$(OBJC) $^ -MM > $@
+	@$(OBJC) $(OBJCFLAGS) $^ -MM > $@
 
 %.o: %.m
-	$(OBJC) $< -c -o $@
+	$(OBJC) $(OBJCFLAGS) $< -c -o $@
 
 $(TARGET): $(OBJS)
 	$(LINK) $^ -o $@ $(LIBS)
 
 clean:
 	$(RM) $(OBJS) $(DEPS) $(TARGET)
+
+debug:
+	$(MAKE) all "CFLAGS=-g -O3 -DDEBUG"
 
 -include $(DEPS)
