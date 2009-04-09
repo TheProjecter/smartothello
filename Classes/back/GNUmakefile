@@ -28,6 +28,9 @@ OBJS:=$(SRCS:.m=.o)
 DEPS:=$(SRCS:.m=.d)
 
 TARGET:=TestBasicBoard
+ifeq ($(PLATFORM),gnu)
+TARGET:=$(TARGET).exe
+endif
 
 GCC:=gcc
 RM:=rm -rf
