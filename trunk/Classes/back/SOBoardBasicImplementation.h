@@ -1,10 +1,10 @@
 #import <Foundation/NSObject.h>
-#import "BoardInterface.h"
+#import "SOBoardInterface.h"
 
-@interface BoardBasicImplementation: NSObject <BoardInterface> {
+@interface SOBoardBasicImplementation: NSObject <SOBoardInterface> {
    @private
-      enum BoardCellStatus Board[BOARD_MAX_X][BOARD_MAX_Y];
-      BOOL SafeDiscs[BOARD_MAX_X][BOARD_MAX_Y];
+      enum SOBoardCellStatus Board[SO_BOARD_MAX_X][SO_BOARD_MAX_Y];
+      BOOL SafeDiscs[SO_BOARD_MAX_X][SO_BOARD_MAX_Y];
       int BlackCount;
       int WhiteCount;
       int EmptyCount;
@@ -14,10 +14,10 @@
       int WhiteSafeCount;
 }
 /**
- * Inherit from BoardInterface
+ * Inherit from SOBoardInterface
  */
 -(id) init;
--(id) initWithBoad: (id <BoardInterface>) board;
+-(id) initWithBoad: (id <SOBoardInterface>) board;
 -(int) BlackCount;
 -(int) WhiteCount;
 -(int) EmptyCount;
@@ -27,12 +27,12 @@
 -(int) WhiteSafeCount;
 -(void) ResetBoard;
 
--(enum BoardCellStatus) GetCellStatus: (int) X : (int) Y;
+-(enum SOBoardCellStatus) GetCellStatus: (int) X : (int) Y;
 -(BOOL) IsDiscSafe: (int) X: (int) Y;
 -(void) MakeMove: (BOOL) isBlack
               At: (int) X : (int) Y;
 -(BOOL) HasValidMove: (BOOL) isBlack;
--(enum BoardMoveResult) IsValidMove: (BOOL) isBlack
+-(enum SOBoardMoveResult) IsValidMove: (BOOL) isBlack
                                  At: (int) X : (int) Y;
 -(int) GetValidMoveCount: (BOOL) isBlack;
 

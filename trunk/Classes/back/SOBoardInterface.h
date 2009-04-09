@@ -1,20 +1,20 @@
-#define BOARD_MAX_X 8
-#define BOARD_MAX_Y 8 
+#define SO_BOARD_MAX_X 8
+#define SO_BOARD_MAX_Y 8 
 
 
-enum BoardCellStatus{
-   kSpace = 0,
-   kBlack = -1,
-   kWhite = 1
+enum SOBoardCellStatus{
+   kSOEmpty = 0,
+   kSOBlack = -1,
+   kSOWhite = 1
 };
 
-enum BoardMoveResult {
-   kAvailable,
-   kOccupied,
-   kChangeNone
+enum SOBoardMoveResult {
+   kSOAvailable,
+   kSOOccupied,
+   kSOChangeNone
 };
 
-@protocol BoardInterface
+@protocol SOBoardInterface
 
 -(int) BlackCount;
 -(int) WhiteCount;
@@ -25,7 +25,7 @@ enum BoardMoveResult {
 -(int) WhiteSafeCount;
 -(void) ResetBoard;
 
--(enum BoardCellStatus) GetCellStatus: (int) X : (int) Y;
+-(enum SOBoardCellStatus) GetCellStatus: (int) X : (int) Y;
 -(BOOL) IsDiscSafe: (int) X: (int) Y;
 
 /**
@@ -34,7 +34,7 @@ enum BoardMoveResult {
 -(void) MakeMove: (BOOL) isBlack
               At: (int) X : (int) Y;
 -(BOOL) HasValidMove: (BOOL) isBlack;
--(enum BoardMoveResult) IsValidMove: (BOOL) isBlack
+-(enum SOBoardMoveResult) IsValidMove: (BOOL) isBlack
                  At: (int) X : (int) Y;
 -(int) GetValidMoveCount: (BOOL) isBlack;
 @end
