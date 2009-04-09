@@ -42,11 +42,11 @@
 {
    self = [super init];
    if(self) {
-      int x, y;
-      for(x = 0; x < SO_BOARD_MAX_X; x++) {
-         for(y = 0; y < SO_BOARD_MAX_Y; y++) {
-            self->Board[x][y]     = [board GetCellStatus: x: y];
-            self->SafeDiscs[x][y] = [board IsDiscSafe: x: y];
+      int r, c;
+      for(r = 0; r < SO_BOARD_MAX_X; r++) {
+         for(c = 0; c < SO_BOARD_MAX_Y; c++) {
+            self->Board[r][c]     = [board GetCellStatus: r: c];
+            self->SafeDiscs[r][c] = [board IsDiscSafe: r: c];
          }
       }
       [self UpdateCounts];
@@ -55,11 +55,11 @@
 }
 
 -(void) ResetBoard {
-   int x, y;
-   for(x = 0; x < SO_BOARD_MAX_X; x++) {
-      for(y = 0; y < SO_BOARD_MAX_Y; y++) {
-         Board[x][y] = kSOEmpty;
-         SafeDiscs[x][y] = FALSE;
+   int r, c;
+   for(r = 0; r < SO_BOARD_MAX_X; r++) {
+      for(c = 0; c < SO_BOARD_MAX_Y; c++) {
+         Board[r][c] = kSOEmpty;
+         SafeDiscs[r][c] = FALSE;
       }
    }
    Board[3][3] = Board[4][4] =  kSOWhite;
@@ -67,38 +67,38 @@
    [self UpdateCounts];
 }
 
--(enum SOBoardCellStatus) GetCellStatus: (int) X : (int) Y {
-   return Board[X][Y];
+-(enum SOBoardCellStatus) GetCellStatus: (int) row : (int) col {
+   return Board[row][col];
 }
 
--(BOOL) IsDiscSafe: (int) X: (int) Y {
-   return SafeDiscs[X][Y];
+-(BOOL) IsDiscSafe: (int) row: (int) col {
+   return SafeDiscs[row][col];
 }
 
 -(void) MakeMove: (BOOL) isBlack
-              At: (int) X : (int) Y 
+              At: (int) row : (int) col 
 {
    enum SOBoardCellStatus color;
-   int cX, cY;
-   int dX, dY;
+   int r, c;
+   int dr, dc;
    if(isBlack) {
       color = kSOBlack;
    } else {
       color = kSOWhite;
    }
-   Board[X][Y] = color;
-   for(dX = -1; dX <= 1; dX++) {
-      for(dY = -1; dY <= 1; dY++) {
-         if(!(dX == 0 && dY == 0) 
+   Board[row][col] = color;
+   for(dr = -1; dr <= 1; dr++) {
+      for(dc = -1; dc <= 1; dc++) {
+         if(!(dr == 0 && dc == 0) 
                && [self IsOutFlanking: isBlack
-                                   At: X : Y
-                                Delta: dX : dY]) {
-            cX = X + dX;
-            cY = Y + dY;
-            while(Board[cX][cY] == -color) {
-               Board[cX][cY] = color;
-               cX += dX;
-               cY += cY;
+                                   At: row : col
+                                Delta: dr : dc]) {
+            r = row + dr;
+            c = col + dc;
+            while(Board[r][c] == -color) {
+               Board[r][c] = color;
+               r += dr;
+               c += dc;
             }
          }
       }
@@ -106,11 +106,11 @@
    [self UpdateCounts];
 }
 -(BOOL) HasValidMove: (BOOL) isBlack {
-   int x, y;
-   for(x = 0; x < SO_BOARD_MAX_X; x++) {
-      for(y = 0; y < SO_BOARD_MAX_Y; y++) {
+   int r, c;
+   for(r = 0; r < SO_BOARD_MAX_X; r++) {
+      for(c = 0; c < SO_BOARD_MAX_Y; c++) {
          if(kSOAvailable 
-               == [self IsValidMove: isBlack At: x : y]) {
+               == [self IsValidMove: isBlack At: r : c]) {
             return TRUE;
          }
       }
@@ -119,18 +119,18 @@
 }
 
 -(enum SOBoardMoveResult) IsValidMove: (BOOL) isBlack
-                                 At: (int) X : (int) Y 
+                                 At: (int) row : (int) col 
 {
-   int dX, dY;
-   if(Board[X][Y] != kSOEmpty) {
+   int dr, dc;
+   if(Board[row][col] != kSOEmpty) {
       return kSOOccupied;
    }
-   for(dX = -1; dX <= 1; dX++) {
-      for(dY = -1; dY <=1; dY++) {
-         if(!(dX == 0 && dY == 0)
+   for(dr = -1; dr <= 1; dr++) {
+      for(dc = -1; dc <=1; dc++) {
+         if(!(dr == 0 && dc == 0)
                && [self IsOutFlanking: isBlack
-                                   At: X : Y
-                                Delta: dX : dY]) {
+                                   At: row : col
+                                Delta: dr : dc]) {
             return kSOAvailable;
          }
       }
@@ -140,11 +140,11 @@
 
 -(int) GetValidMoveCount: (BOOL) isBlack {
    int n = 0;
-   int x, y;
-   for(x = 0; x < SO_BOARD_MAX_X; x++) {
-      for(y = 0; y < SO_BOARD_MAX_Y; y++) {
+   int r, c;
+   for(r = 0; r < SO_BOARD_MAX_X; r++) {
+      for(c = 0; c < SO_BOARD_MAX_Y; c++) {
          if(kSOAvailable == [self IsValidMove: isBlack
-                                         At: x : y]) {
+                                         At: r : c]) {
             n++;
          }
       }
@@ -153,22 +153,22 @@
 }
 
 -(BOOL) IsOutFlanking: (BOOL) isBlack
-                  At: (int) X : (int) Y
-               Delta: (int) dX : (int) dY
+                  At: (int) row : (int) col
+               Delta: (int) dr : (int) dc
 {
-   int x = X + dX;
-   int y = Y + dY;
+   int r = row + dr;
+   int c = col + dc;
    enum SOBoardCellStatus color;
    if(isBlack) {
       color = kSOBlack;
    } else {
       color = kSOWhite;
    }
-   while (x >= 0 && x < SO_BOARD_MAX_X && y >= 0 && y < SO_BOARD_MAX_Y && Board[x][y] == -color) {
-      x += dX;
-      y += dY;
+   while (r >= 0 && r < SO_BOARD_MAX_X && c >= 0 && c < SO_BOARD_MAX_Y && Board[r][c] == -color) {
+      r += dr;
+      c += dc;
    }
-   if (x < 0 || x > 7 || y < 0 || y > 7 || (x - dX == X && y - dY == Y) || Board[x][y] != color) {
+   if (r < 0 || r > 7 || c < 0 || c > 7 || (r - dr == row && c - dc == col) || Board[r][c] != color) {
       return FALSE;
    }
    return TRUE;
@@ -182,55 +182,55 @@
    WhiteFrontierCount = 0;
    WhiteSafeCount = 0;
 
-   int i, j;
+   int r, c;
    int dr, dc;
    BOOL statusChanged = TRUE;
    while (statusChanged) {
       statusChanged = FALSE;
-      for (i  = 0; i < SO_BOARD_MAX_X; i++) {
-         for (j = 0; j < SO_BOARD_MAX_Y; j++) {
-            if(Board[i][j] != kSOEmpty
-                  && !SafeDiscs[i][j]
-                  && [self IsOutFlankable: i :j]) {
-               SafeDiscs[i][j] = TRUE;
+      for (r  = 0; r < SO_BOARD_MAX_X; r++) {
+         for (c = 0; c < SO_BOARD_MAX_Y; c++) {
+            if(Board[r][c] != kSOEmpty
+                  && !SafeDiscs[r][c]
+                  && [self IsOutFlankable: r :c]) {
+               SafeDiscs[r][c] = TRUE;
                statusChanged = TRUE;
             }
          }
       }
    }
 
-   for (i = 0; i < SO_BOARD_MAX_X; i++) {
-      for (j = 0; j < SO_BOARD_MAX_Y; j++) {
+   for (r = 0; r < SO_BOARD_MAX_X; r++) {
+      for (c = 0; c < SO_BOARD_MAX_Y; c++) {
          BOOL isFrontier = FALSE;
-         if (Board[i][j] != kSOEmpty) {
+         if (Board[r][c] != kSOEmpty) {
             for (dr = -1; dr <= 1; dr++) {
                for (dc = -1; dc <= 1; dc++) {
                   if (!(dr == 0 && dc==0)
-                        && i + dr >= 0
-                        && i + dr < SO_BOARD_MAX_X
-                        && j + dc >= 0
-                        && j + dc < SO_BOARD_MAX_Y
-                        && Board[i][j] == kSOEmpty) {
+                        && r + dr >= 0
+                        && r + dr < SO_BOARD_MAX_X
+                        && c + dc >= 0
+                        && c + dc < SO_BOARD_MAX_Y
+                        && Board[r][c] == kSOEmpty) {
                      isFrontier = FALSE;
                   }
                }
             }
          }
 
-         if(Board[i][j] == kSOBlack) {
+         if(Board[r][c] == kSOBlack) {
             BlackCount++;
             if (isFrontier) {
                BlackFrontierCount++;
             }
-            if (SafeDiscs[i][j]) {
+            if (SafeDiscs[r][c]) {
                BlackSafeCount++;
             }
-         } else if (Board[i][j] == kSOWhite) {
+         } else if (Board[r][c] == kSOWhite) {
             WhiteCount++;
             if (isFrontier) {
                WhiteFrontierCount++;
             }
-            if (SafeDiscs[i][j]) {
+            if (SafeDiscs[r][c]) {
                WhiteSafeCount++;
             }
          } else {
@@ -240,27 +240,27 @@
    }
 }
 
--(BOOL) IsOutFlankable: (int) X : (int) Y {
-   int color = Board[X][Y];
-   int i, j;
+-(BOOL) IsOutFlankable: (int) row : (int) col {
+   int color = Board[row][col];
+   int r, c;
    BOOL hasSpaceSide1 = FALSE, hasSpaceSide2 = FALSE;
    BOOL hasUnsafeSide1 = FALSE, hasUnsafeSide2 = FALSE;
 
    // West, East
-   for (j = 0; j < X && !hasSpaceSide1; j++) {
-      if (Board[X, j] ==kSOEmpty) {
+   for (c = 0; c < row && !hasSpaceSide1; c++) {
+      if (Board[row, c] ==kSOEmpty) {
          hasSpaceSide1 = TRUE;
-      } else if (Board[X][j] != color
-            || !SafeDiscs[X][j]) {
+      } else if (Board[row][c] != color
+            || !SafeDiscs[row][c]) {
          hasUnsafeSide1 = TRUE;
       }
    }
 
-   for (j = Y + 1; j < SO_BOARD_MAX_Y && !hasSpaceSide2; j++) {
-      if (Board[X][j] == kSOEmpty) {
+   for (c = col + 1; c < SO_BOARD_MAX_Y && !hasSpaceSide2; c++) {
+      if (Board[row][c] == kSOEmpty) {
          hasSpaceSide2 = TRUE;
-      } else if (Board[X][j] != color
-            || !SafeDiscs[X][j]) {
+      } else if (Board[row][c] != color
+            || !SafeDiscs[row][c]) {
          hasUnsafeSide2 = TRUE;
       }
    }
@@ -276,18 +276,18 @@
    hasUnsafeSide1 = FALSE;
    hasUnsafeSide2 = FALSE;
    // North side.
-   for (i = 0; i < X && !hasSpaceSide1; i++) {
-      if (Board[i][Y] == kSOEmpty) {
+   for (r = 0; r < row && !hasSpaceSide1; r++) {
+      if (Board[r][col] == kSOEmpty) {
          hasSpaceSide1 = TRUE;
-      } else if (Board[i][Y] != color || !SafeDiscs[i][Y]) {
+      } else if (Board[r][col] != color || !SafeDiscs[r][col]) {
          hasUnsafeSide1 = TRUE;
       }
    }
    // South side.
-   for (i = X + 1; i < SO_BOARD_MAX_X && !hasSpaceSide2; i++) {
-      if (Board[i][Y] == kSOEmpty) {
+   for (r = row + 1; r < SO_BOARD_MAX_X && !hasSpaceSide2; r++) {
+      if (Board[r][col] == kSOEmpty) {
          hasSpaceSide2 = TRUE;
-      } else if (Board[i][Y] != color || !SafeDiscs[i][Y]) {
+      } else if (Board[r][col] != color || !SafeDiscs[r][col]) {
          hasUnsafeSide2 = TRUE;
       }
    }
@@ -302,21 +302,21 @@
    hasSpaceSide2  = FALSE;
    hasUnsafeSide1 = FALSE;
    hasUnsafeSide2 = FALSE;
-   for (i = X - 1, j = Y - 1;
-         i >= 0 && j >= 0 && !hasSpaceSide1;
-         i--, j--) {
-      if (Board[i][j] == kSOEmpty) {
+   for (r = row - 1, c = col - 1;
+         r >= 0 && c >= 0 && !hasSpaceSide1;
+         r--, c--) {
+      if (Board[r][c] == kSOEmpty) {
          hasSpaceSide1 = TRUE;
-      } else if (Board[i][j] != color || !SafeDiscs[i][j]) {
+      } else if (Board[r][c] != color || !SafeDiscs[r][c]) {
          hasUnsafeSide1 = TRUE;
       }
    }
-   for (i = X + 1, j = Y + 1;
-         i < SO_BOARD_MAX_X && j < SO_BOARD_MAX_Y && !hasSpaceSide2;
-         i++, j++) {
-      if (Board[i][j] == kSOEmpty) {
+   for (r = row + 1, c = col + 1;
+         r < SO_BOARD_MAX_X && c < SO_BOARD_MAX_Y && !hasSpaceSide2;
+         r++, c++) {
+      if (Board[r][c] == kSOEmpty) {
          hasSpaceSide2 = TRUE;
-      } else if (Board[i][j] != color || !SafeDiscs[i][j]) {
+      } else if (Board[r][c] != color || !SafeDiscs[r][c]) {
          hasUnsafeSide2 = TRUE;
       }
    }
@@ -331,21 +331,21 @@
    hasSpaceSide2  = FALSE;
    hasUnsafeSide1 = FALSE;
    hasUnsafeSide2 = FALSE;
-   for (i = X - 1, j = Y + 1;
-         i >= 0 && j < SO_BOARD_MAX_Y && !hasSpaceSide1;
-         i--, j++) {
-      if (Board[i][j] == kSOEmpty) {
+   for (r = row - 1, c = col + 1;
+         r >= 0 && c < SO_BOARD_MAX_Y && !hasSpaceSide1;
+         r--, c++) {
+      if (Board[r][c] == kSOEmpty) {
          hasSpaceSide1 = TRUE;
-      } else if (Board[i][j] != color || !SafeDiscs[i][j]) {
+      } else if (Board[r][c] != color || !SafeDiscs[r][c]) {
          hasUnsafeSide1 = TRUE;
       }
    }
-   for (i = X + 1, j = Y - 1;
-         i < SO_BOARD_MAX_X && j >= 0 && !hasSpaceSide2;
-         i++, j--) {
-      if (Board[i][j] == kSOEmpty) {
+   for (r = row + 1, c = col - 1;
+         r < SO_BOARD_MAX_X && c >= 0 && !hasSpaceSide2;
+         r++, c--) {
+      if (Board[r][c] == kSOEmpty) {
          hasSpaceSide2 = TRUE;
-      } else if (Board[i][j] != color || !SafeDiscs[i][j]) {
+      } else if (Board[r][c] != color || !SafeDiscs[r][c]) {
          hasUnsafeSide2 = TRUE;
       }
    }
