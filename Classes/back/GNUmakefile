@@ -18,7 +18,7 @@ ifeq ($(PLATFORM),mac)
 LIBS+=-framework Foundation
 endif
 
-SRCS:= BoardBasicImplementation.m \
+SRCS:= SOBoardBasicImplementation.m \
 	TestBasicBoard.m
 
 OBJS:=$(SRCS:.m=.o)
