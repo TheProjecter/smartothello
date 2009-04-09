@@ -1,3 +1,5 @@
+#import <time.h>
+#import <stdlib.h>
 #import "SOStrategyComputer.h"
 
 #define MAX_INT  (int)((unsigned int)(-1) - 1)
@@ -62,20 +64,6 @@
    return LookAheadDepth;
 }
 
--(struct SOComputerMove) CalculateNextMove: (id <SOBoardInterface>) board
-                                  : (int) color
-                                  : (int) depth
-                                  : (int) alpha
-                                  : (int) beta 
-{
-   // Rank is set to -color * MAX_RANK
-   // Move is set to -1, -1
-   struct SOComputerMove bestMove
-      = { {-1, -1}, -color * MAX_RANK};
-
-   return bestMove;
-}
-
 -(struct SOMove) CalculateNextMove: (id <SOBoardInterface>)    board
                            Against: (struct SOMove)            opponentMove 
                                   : (enum SOBoardCellStatus)   opponentColor
@@ -89,4 +77,148 @@
                                  : alpha
                                  : beta].Move;
 }
+
+-(struct SOComputerMove) CalculateNextMove: (id <SOBoardInterface>) board
+                                  : (int) color
+                                  : (int) depth
+                                  : (int) alpha
+                                  : (int) beta 
+{
+   // Rank is set to -color * MAX_RANK
+   // Move is set to -1, -1
+   struct SOComputerMove bestMove
+      = { {-1, -1}, -color * MAX_RANK};
+
+   // Find out how many valid moves we have so we can initialize the
+   // mobility score.
+   int validMoves = [board GetValidMoveCount: color == kSOBlack];
+
+   // Start at a random position on the board. This way, if two or
+   // more moves are equally good, we'll take one of them at random.
+   srandom(time(NULL));
+   int rowStart = random() * 8 / 100;
+   int colStart = random() * 8 / 100;
+
+   // Check all valid moves.
+   int i, j;
+   for (i = 0; i < 8; i++)
+      for (j = 0; j < 8; j++)
+      {
+         // Get the row and column.
+         int row = (rowStart + i) % 8;
+         int col = (colStart + j) % 8;
+
+         if ([board IsValidMove: color == kSOBlack
+                             At: row : col])
+         {
+
+            // Make the move. TODO
+            struct SOComputerMove testMove = {row, col};
+            Board testBoard = new Board(board);
+            testBoard.MakeMove(color, testMove.row, testMove.col);
+            int score = testBoard.WhiteCount - testBoard.BlackCount;
+
+            // Check the board.
+            int nextColor = -color;
+            int forfeit = 0;
+            bool isEndGame = false;
+            int opponentValidMoves = testBoard.GetValidMoveCount(nextColor);
+            if (opponentValidMoves == 0)
+            {
+               // The opponent cannot move, count the forfeit.
+               forfeit = color;
+
+               // Switch back to the original color.
+               nextColor = -nextColor;
+
+               // If that player cannot make a move either, the
+               // game is over.
+               if (!testBoard.HasAnyValidMove(nextColor))
+                  isEndGame = true;
+            }
+
+            // If we reached the end of the look ahead (end game or
+            // max depth), evaluate the board and set the move
+            // rank.
+            if (isEndGame || depth == this.lookAheadDepth)
+            {
+               // For an end game, max the ranking and add on the
+               // final score.
+               if (isEndGame)
+               {
+                  // Negative value for black win.
+                  if (score < 0)
+                     testMove.rank = -ReversiForm.maxRank + score;
+
+                  // Positive value for white win.
+                  else if (score > 0)
+                     testMove.rank = ReversiForm.maxRank + score;
+
+                  // Zero for a draw.
+                  else
+                     testMove.rank = 0;
+               }
+
+               // It's not an end game so calculate the move rank.
+               else
+                  testMove.rank =
+                     this.forfeitWeight   * forfeit +
+                     this.frontierWeight  * (testBoard.BlackFrontierCount - testBoard.WhiteFrontierCount) +
+                     this.mobilityWeight  * color * (validMoves - opponentValidMoves) +
+                     this.stabilityWeight * (testBoard.WhiteSafeCount - testBoard.BlackSafeCount) +
+                     score;
+            }
+
+            // Otherwise, perform a look ahead.
+            else
+            {
+               ComputerMove nextMove = this.GetBestMove(testBoard, nextColor, depth + 1, alpha, beta);
+
+               // Pull up the rank.
+               testMove.rank = nextMove.rank;
+
+               // Forfeits are cumulative, so if the move did not
+               // result in an end game, add any current forfeit
+               // value to the rank.
+               if (forfeit != 0 && Math.Abs(testMove.rank) < ReversiForm.maxRank)
+                  testMove.rank += forfeitWeight * forfeit;
+
+               // Adjust the alpha and beta values, if necessary.
+               if (color == Board.White && testMove.rank > beta)
+                  beta = testMove.rank;
+               if (color == Board.Black && testMove.rank < alpha)
+                  alpha = testMove.rank;
+            }
+
+            // Perform a cutoff if the rank is outside tha alpha-beta range.
+            if (color == Board.White && testMove.rank > alpha)
+            {
+               testMove.rank = alpha;
+               return testMove;
+            }
+            if (color == Board.Black && testMove.rank < beta)
+            {
+               testMove.rank = beta;
+               return testMove;
+            }
+
+            // If this is the first move tested, assume it is the
+            // best for now.
+            if (bestMove.row < 0)
+               bestMove = testMove;
+
+            // Otherwise, compare the test move to the current
+            // best move and take the one that is better for this
+            // color.
+            else if (color * testMove.rank > color * bestMove.rank)
+               bestMove = testMove;
+         }
+      }
+
+   // Return the best move found.
+   return bestMove;
+
+
+}
+
 @end
