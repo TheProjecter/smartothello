@@ -27,13 +27,13 @@
 -(int) WhiteSafeCount;
 -(void) ResetBoard;
 
--(enum SOBoardCellStatus) GetCellStatus: (int) X : (int) Y;
--(BOOL) IsDiscSafe: (int) X: (int) Y;
+-(enum SOBoardCellStatus) GetCellStatus: (int) row : (int) col;
+-(BOOL) IsDiscSafe: (int) row: (int) col;
 -(void) MakeMove: (BOOL) isBlack
-              At: (int) X : (int) Y;
+              At: (int) row : (int) col;
 -(BOOL) HasValidMove: (BOOL) isBlack;
 -(enum SOBoardMoveResult) IsValidMove: (BOOL) isBlack
-                                 At: (int) X : (int) Y;
+                                 At: (int) row : (int) col;
 -(int) GetValidMoveCount: (BOOL) isBlack;
 
 /**
@@ -41,7 +41,7 @@
  */
 -(void) UpdateCounts;
 -(BOOL) IsOutFlanking: (BOOL) isBlack
-                   At: (int) X : (int) Y
-                Delta: (int) dX : (int) dY;
--(BOOL) IsOutFlankable: (int) X : (int) Y;
+                   At: (int) row : (int) col
+                Delta: (int) dr : (int) dc;
+-(BOOL) IsOutFlankable: (int) row : (int) col;
 @end
