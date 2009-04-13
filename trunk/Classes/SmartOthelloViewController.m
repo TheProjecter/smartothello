@@ -8,11 +8,16 @@
 
 #import "SmartOthelloViewController.h"
 #import "AboutViewController.h"
-
+#import "SmartOthelloView.h"
+#import "Constants.h"
 
 @implementation SmartOthelloViewController
 
 @synthesize flipDelegate;
+@synthesize skillLevel;
+@synthesize blackPlayer;
+@synthesize whitePlayer;
+@synthesize showPossibleMoves;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -23,6 +28,16 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	// Here you can add something extra. For example, you can refresh the settings here, See AppSettings project in Begin iPhone Development
+	skillLevel = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloSkillLevelKey];
+	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
+	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
+	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
+	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
+	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
+	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
+	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
+	// [(SmartOthelloView *)(self.view) restartGame];
+	[super viewDidAppear:animated];
 }
 
 /*
@@ -41,12 +56,21 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	skillLevel = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloSkillLevelKey];
+	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
+	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
+	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
+	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
+	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
+	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
+	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
+	[(SmartOthelloView *)(self.view) restartGame];
     [super viewDidLoad];
 }
-*/
+
 
 
 // Override to allow orientations other than the default portrait orientation.
@@ -79,6 +103,14 @@
 	aboutViewController.delegate = self;
 	[self presentModalViewController:navigationController animated:YES];
     [aboutViewController release];
+}
+
+- (IBAction)newButtonClicked:(id)sender {
+	[(SmartOthelloView *)(self.view) restartGame];
+}
+
+- (IBAction)undoButtonClicked:(id)sender {
+	[(SmartOthelloView *)(self.view) undoMove];
 }
 
 @end
