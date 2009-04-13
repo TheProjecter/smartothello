@@ -359,4 +359,8 @@
 
 }
 
+-(NSObject <SOBoardInterface>*) Clone {
+   return [[SOBoardBasicImplementation alloc] initWithBoad: self];
+}
+
 @end

@@ -1,3 +1,4 @@
+#import <Foundation/NSObject.h>
 #define SO_BOARD_MAX_X 8
 #define SO_BOARD_MAX_Y 8 
 
@@ -37,4 +38,7 @@ enum SOBoardMoveResult {
 -(enum SOBoardMoveResult) IsValidMove: (BOOL) isBlack
                  At: (int) X : (int) Y;
 -(int) GetValidMoveCount: (BOOL) isBlack;
+-(NSObject <SOBoardInterface>*) Clone;
 @end
+
+typedef NSObject <SOBoardInterface> * SOBoardInterfaceObject;
