@@ -71,11 +71,8 @@
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC45NTkyNzMzNCAxIDAuNzUwMDE5MDEAA</bytes>
 				</object>
 			</object>
 		</object>
@@ -186,7 +183,7 @@
 					<string key="superclassName">UIViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">AboutViewController.h</string>
+						<string key="minorKey">Classes/AboutViewController.h</string>
 					</object>
 				</object>
 			</object>
