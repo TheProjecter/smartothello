@@ -11,8 +11,16 @@
 
 @interface SettingViewController : UIViewController {
 	id flipDelegate;
+	IBOutlet UISegmentedControl *skllLevelSegmentControl;
+	IBOutlet UISegmentedControl *blackPlayerSegmentControl;
+	IBOutlet UISegmentedControl *whitePlayerSegmentControl;
+	IBOutlet UISwitch *showPossibleMovesSwitch;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
+@property (nonatomic, retain) UISegmentedControl *skllLevelSegmentControl;
+@property (nonatomic, retain) UISegmentedControl *blackPlayerSegmentControl;
+@property (nonatomic, retain) UISegmentedControl *whitePlayerSegmentControl;
+@property (nonatomic, retain) UISwitch *showPossibleMovesSwitch;
 
 - (IBAction)toggleView:(id)sender;
 @end

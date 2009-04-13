@@ -7,11 +7,15 @@
 //
 
 #import "SettingViewController.h"
-
+#import "Constants.h"
 
 @implementation SettingViewController
 
 @synthesize flipDelegate;
+@synthesize skllLevelSegmentControl;
+@synthesize blackPlayerSegmentControl;
+@synthesize whitePlayerSegmentControl;
+@synthesize showPossibleMovesSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -23,6 +27,12 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
 	// Here you can save the settings parameter to NSDefaults, see "AppSettings" project in "Begin iPhone Development"
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setInteger:skllLevelSegmentControl.selectedSegmentIndex forKey:SmartOthelloSkillLevelKey];
+	[defaults setInteger:blackPlayerSegmentControl.selectedSegmentIndex forKey:SmartOthelloBlackPlayerKey];
+	[defaults setInteger:whitePlayerSegmentControl.selectedSegmentIndex forKey:SmartOthelloWhitePlayerKey];
+	[defaults setBool:showPossibleMovesSwitch.on forKey:SmartOthelloShowPossibleMovesKey];
+	[super viewWillDisappear:animated];
 }
 
 
@@ -58,6 +68,12 @@
     [navigationBar release];
     [doneItem release];
     [doneItemButton release];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	skllLevelSegmentControl.selectedSegmentIndex = [defaults integerForKey:SmartOthelloSkillLevelKey];
+	blackPlayerSegmentControl.selectedSegmentIndex = [defaults integerForKey:SmartOthelloBlackPlayerKey];
+	whitePlayerSegmentControl.selectedSegmentIndex = [defaults integerForKey:SmartOthelloWhitePlayerKey];
+	showPossibleMovesSwitch.on = [defaults boolForKey:SmartOthelloShowPossibleMovesKey];
 }
 
 
@@ -76,6 +92,7 @@
 
 
 - (void)dealloc {
+	[skllLevelSegmentControl release];
     [super dealloc];
 }
 
