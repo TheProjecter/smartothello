@@ -11,9 +11,19 @@
 
 @interface SmartOthelloViewController : UIViewController {
 	id flipDelegate;
+	int skillLevel;
+	int blackPlayer;
+	int whitePlayer;
+	BOOL showPossibleMoves;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
+@property int skillLevel;
+@property int blackPlayer;
+@property int whitePlayer;
+@property BOOL showPossibleMoves;
 
 - (IBAction)toggleView:(id)sender;
 - (IBAction)infoButtonClicked:(id)sender;
+- (IBAction)newButtonClicked:(id)sender;
+- (IBAction)undoButtonClicked:(id)sender;
 @end
