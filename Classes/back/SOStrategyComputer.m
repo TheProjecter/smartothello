@@ -112,17 +112,20 @@
                              At: row : col])
          {
 
-            // Make the move. TODO
-            struct SOComputerMove testMove = {row, col};
-            Board testBoard = new Board(board);
-            testBoard.MakeMove(color, testMove.row, testMove.col);
-            int score = testBoard.WhiteCount - testBoard.BlackCount;
+            // Make the move. 
+            struct SOComputerMove testMove = {{row, col}};
+            SOBoardInterfaceObject testBoard = [board Clone];
+            int score = [testBoard WhiteCount] - [testBoard BlackCount];
 
             // Check the board.
             int nextColor = -color;
             int forfeit = 0;
             bool isEndGame = false;
-            int opponentValidMoves = testBoard.GetValidMoveCount(nextColor);
+
+            [testBoard MakeMove: color == kSOBlack
+                             At: testMove.Move.row : testMove.Move.col];
+
+            int opponentValidMoves = [testBoard GetValidMoveCount: nextColor == kSOBlack];
             if (opponentValidMoves == 0)
             {
                // The opponent cannot move, count the forfeit.
@@ -133,14 +136,14 @@
 
                // If that player cannot make a move either, the
                // game is over.
-               if (!testBoard.HasAnyValidMove(nextColor))
+               if (![testBoard HasAnyValidMove : nextColor == kSOBlack])
                   isEndGame = true;
             }
 
             // If we reached the end of the look ahead (end game or
             // max depth), evaluate the board and set the move
             // rank.
-            if (isEndGame || depth == this.lookAheadDepth)
+            if (isEndGame || depth == LookAheadDepth)
             {
                // For an end game, max the ranking and add on the
                // final score.
@@ -148,24 +151,24 @@
                {
                   // Negative value for black win.
                   if (score < 0)
-                     testMove.rank = -ReversiForm.maxRank + score;
+                     testMove.Rank = - MAX_RANK + score;
 
                   // Positive value for white win.
                   else if (score > 0)
-                     testMove.rank = ReversiForm.maxRank + score;
+                     testMove.Rank = MAX_RANK + score;
 
                   // Zero for a draw.
                   else
-                     testMove.rank = 0;
+                     testMove.Rank = 0;
                }
 
                // It's not an end game so calculate the move rank.
                else
-                  testMove.rank =
-                     this.forfeitWeight   * forfeit +
-                     this.frontierWeight  * (testBoard.BlackFrontierCount - testBoard.WhiteFrontierCount) +
-                     this.mobilityWeight  * color * (validMoves - opponentValidMoves) +
-                     this.stabilityWeight * (testBoard.WhiteSafeCount - testBoard.BlackSafeCount) +
+                  testMove.Rank =
+                     ForfeitWeight * forfeit +
+                     FrontierWeight  * ([testBoard BlackFrontierCount] - [testBoard WhiteFrontierCount]) +
+                     MobilityWeight  * color * (validMoves - opponentValidMoves) +
+                     StabilityWeight * ([testBoard WhiteSafeCount] - [testBoard BlackSafeCount]) +
                      score;
             }
 

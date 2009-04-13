@@ -36,6 +36,9 @@
                                  At: (int) row : (int) col;
 -(int) GetValidMoveCount: (BOOL) isBlack;
 
+-(NSObject <SOBoardInterface>*) Clone;
+
+
 /**
  ********************************
  */

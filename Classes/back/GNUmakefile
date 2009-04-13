@@ -19,8 +19,8 @@ LIBS+=-framework Foundation
 endif
 
 SRCS:= \
-	SOStrategyComputer.m \
 	SOBoardBasicImplementation.m \
+	SOStrategyComputer.m \
 	TestBasicBoard.m
 
 OBJS:=$(SRCS:.m=.o)
