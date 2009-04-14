@@ -1,4 +1,5 @@
 #import <time.h>
+#import <math.h>
 #import <stdlib.h>
 #import "SOStrategyComputer.h"
 
@@ -120,7 +121,7 @@
             // Check the board.
             int nextColor = -color;
             int forfeit = 0;
-            bool isEndGame = false;
+            BOOL isEndGame = FALSE;
 
             [testBoard MakeMove: color == kSOBlack
                              At: testMove.Move.row : testMove.Move.col];
@@ -136,8 +137,8 @@
 
                // If that player cannot make a move either, the
                // game is over.
-               if (![testBoard HasAnyValidMove : nextColor == kSOBlack])
-                  isEndGame = true;
+               if (![testBoard HasValidMove : nextColor == kSOBlack])
+                  isEndGame = TRUE;
             }
 
             // If we reached the end of the look ahead (end game or
@@ -175,53 +176,55 @@
             // Otherwise, perform a look ahead.
             else
             {
-               ComputerMove nextMove = this.GetBestMove(testBoard, nextColor, depth + 1, alpha, beta);
+               struct SOComputerMove nextMove = [self CalculateNextMove: testBoard
+                                                              : nextColor
+                                                              : depth + 1
+                                                              : alpha
+                                                              : beta];
 
                // Pull up the rank.
-               testMove.rank = nextMove.rank;
+               testMove.Rank = nextMove.Rank;
 
                // Forfeits are cumulative, so if the move did not
                // result in an end game, add any current forfeit
                // value to the rank.
-               if (forfeit != 0 && Math.Abs(testMove.rank) < ReversiForm.maxRank)
-                  testMove.rank += forfeitWeight * forfeit;
+               if (forfeit != 0 && abs(testMove.Rank) < MAX_RANK)
+                  testMove.Rank += ForfeitWeight * forfeit;
 
                // Adjust the alpha and beta values, if necessary.
-               if (color == Board.White && testMove.rank > beta)
-                  beta = testMove.rank;
-               if (color == Board.Black && testMove.rank < alpha)
-                  alpha = testMove.rank;
+               if (color == kSOWhite && testMove.Rank > beta)
+                  beta = testMove.Rank;
+               if (color == kSOBlack && testMove.Rank < alpha)
+                  alpha = testMove.Rank;
             }
 
             // Perform a cutoff if the rank is outside tha alpha-beta range.
-            if (color == Board.White && testMove.rank > alpha)
+            if (color == kSOWhite && testMove.Rank > alpha)
             {
-               testMove.rank = alpha;
+               testMove.Rank = alpha;
                return testMove;
             }
-            if (color == Board.Black && testMove.rank < beta)
+            if (color == kSOBlack && testMove.Rank < beta)
             {
-               testMove.rank = beta;
+               testMove.Rank = beta;
                return testMove;
             }
 
             // If this is the first move tested, assume it is the
             // best for now.
-            if (bestMove.row < 0)
+            if (bestMove.Move.row < 0)
                bestMove = testMove;
 
             // Otherwise, compare the test move to the current
             // best move and take the one that is better for this
             // color.
-            else if (color * testMove.rank > color * bestMove.rank)
+            else if (color * testMove.Rank > color * bestMove.Rank)
                bestMove = testMove;
          }
       }
 
    // Return the best move found.
    return bestMove;
-
-
 }
 
 @end
