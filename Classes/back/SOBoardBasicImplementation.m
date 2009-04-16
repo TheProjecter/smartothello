@@ -181,6 +181,7 @@
    WhiteCount = 0;
    WhiteFrontierCount = 0;
    WhiteSafeCount = 0;
+   EmptyCount = 0;
 
    int r, c;
    int dr, dc;

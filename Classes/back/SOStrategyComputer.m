@@ -3,7 +3,7 @@
 #import <stdlib.h>
 #import "SOStrategyComputer.h"
 
-#define MAX_INT  (int)((unsigned int)(-1) - 1)
+#define MAX_INT  (int)((unsigned int)(-1) >> 1)
 #define MAX_RANK (MAX_INT - 64)
 
 @implementation SOStrategyComputer
