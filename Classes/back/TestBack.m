@@ -1,11 +1,31 @@
 #import "SOBoardBasicImplementation.h"
+#import "SOStrategyComputer.h"
 #import <stdio.h>
 
+struct SOMove GetMove(
+      id <SOStrategyInterface>   computer,
+      id <SOBoardInterface>      board,
+      BOOL                       isBlack,
+      BOOL                       isComputerBlack)
+{
+   if ((isComputerBlack && isBlack) || (!isComputerBlack && !isBlack)) {
+      return [computer CalculateNextMove: board Against: isBlack ? kSOBlack : kSOWhite];
+   } else {
+      struct SOMove move;
+      printf("Row: "); fflush(stdout);
+      scanf("%d", &move.row);
+      printf("Col: "); fflush(stdout);
+      scanf("%d", &move.col);
+      return move;
+   }
+}
 
 int main(void) {
-   SOBoardBasicImplementation *board = [[SOBoardBasicImplementation alloc] init];
+   SOBoardBasicImplementation *board    = [[SOBoardBasicImplementation alloc] init];
+   SOStrategyComputer         *computer = [[SOStrategyComputer alloc] initWithAILevel: kSOAIExpert];
    int X, Y;
-   BOOL isBlack = TRUE;
+   BOOL isBlack         = TRUE;
+   BOOL isComputerBlack = FALSE;
    enum SOBoardMoveResult result;
    while(1) {
       for(X=0; X < SO_BOARD_MAX_X; X++) {
@@ -28,12 +48,9 @@ int main(void) {
       printf("'s Turn\n"); fflush(stdout);
       do
       {
-         printf("Row: "); fflush(stdout);
-         scanf("%d", &X);
-         printf("Col: "); fflush(stdout);
-         scanf("%d", &Y);
+         struct SOMove move = GetMove(computer, board, isBlack, isComputerBlack);
          result = [board IsValidMove: isBlack
-                                  At: X : Y];
+                                  At: move.row : move.col];
          if (result == kSOChangeNone) {
             printf("Change Nothing! Re-input\n"); fflush(stdout);
          } else if (result == kSOOccupied) {
@@ -46,5 +63,6 @@ int main(void) {
       isBlack = !isBlack;
    }
    [board release];
+   [computer release];
    return 0;
 }
