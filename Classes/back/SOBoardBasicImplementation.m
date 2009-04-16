@@ -248,7 +248,7 @@
 
    // West, East
    for (c = 0; c < row && !hasSpaceSide1; c++) {
-      if (Board[row, c] ==kSOEmpty) {
+      if (Board[row][c] == kSOEmpty) {
          hasSpaceSide1 = TRUE;
       } else if (Board[row][c] != color
             || !SafeDiscs[row][c]) {

@@ -40,6 +40,7 @@
          StabilityWeight    =  0;
          break;
    }
+   Difficulty     = level;
    LookAheadDepth = level + 3;
 }
 
@@ -62,12 +63,18 @@
 
 -(int) AdjustLookAheadDepth: (id <SOBoardInterface>) board
 {
+   // in the beginning, we have 4 pieces
+   int emptyCount = [board EmptyCount];
+   int moveCount  = SO_BOARD_MAX_X * SO_BOARD_MAX_Y - emptyCount -4;
+   LookAheadDepth = Difficulty + 3;
+   if (moveCount >= 55 - Difficulty) {
+      LookAheadDepth = emptyCount;
+   }
    return LookAheadDepth;
 }
 
 -(struct SOMove) CalculateNextMove: (id <SOBoardInterface>)    board
-                           Against: (struct SOMove)            opponentMove 
-                                  : (enum SOBoardCellStatus)   opponentColor
+                           Against: (enum SOBoardCellStatus)   opponentColor
 {
    int alpha = MAX_RANK + 64;
    int beta  = -alpha;
@@ -96,9 +103,9 @@
 
    // Start at a random position on the board. This way, if two or
    // more moves are equally good, we'll take one of them at random.
-   srandom(time(NULL));
-   int rowStart = random() * 8 / 100;
-   int colStart = random() * 8 / 100;
+   srand(time(NULL));
+   int rowStart = rand() * 8 / 100;
+   int colStart = rand() * 8 / 100;
 
    // Check all valid moves.
    int i, j;
@@ -220,6 +227,7 @@
             // color.
             else if (color * testMove.Rank > color * bestMove.Rank)
                bestMove = testMove;
+            [testBoard release];
          }
       }
 
