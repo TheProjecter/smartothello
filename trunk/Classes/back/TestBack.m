@@ -23,18 +23,18 @@ struct SOMove GetMove(
 int main(void) {
    SOBoardBasicImplementation *board    = [[SOBoardBasicImplementation alloc] init];
    SOStrategyComputer         *computer = [[SOStrategyComputer alloc] initWithAILevel: kSOAIExpert];
-   int X, Y;
+   int row, col;
    BOOL isBlack         = TRUE;
    BOOL isComputerBlack = FALSE;
    enum SOBoardMoveResult result;
    while(1) {
-      for(X=0; X < SO_BOARD_MAX_X; X++) {
-         for(Y=0; Y < SO_BOARD_MAX_Y; Y++) {
-            if(kSOEmpty == [board GetCellStatus: X : Y]) {
+      for(row=0; row < SO_BOARD_MAX_X; row++) {
+         for(col=0; col < SO_BOARD_MAX_Y; col++) {
+            if(kSOEmpty == [board GetCellStatus: row : col]) {
                printf("-");
-            } else if(kSOWhite == [board GetCellStatus: X : Y]) {
+            } else if(kSOWhite == [board GetCellStatus: row : col]) {
                printf("O");
-            } else if(kSOBlack == [board GetCellStatus: X : Y]) {
+            } else if(kSOBlack == [board GetCellStatus: row : col]) {
                printf("X");
             }
          }
@@ -57,7 +57,7 @@ int main(void) {
             printf("This position is occupied\n"); fflush(stdout);
          } else {
             [board MakeMove: isBlack
-                         At: X : Y];
+                         At: move.row : move.col];
          }
       } while (kSOAvailable != result);
       isBlack = !isBlack;
