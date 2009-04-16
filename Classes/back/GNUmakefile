@@ -21,7 +21,7 @@ endif
 SRCS:= \
 	SOBoardBasicImplementation.m \
 	SOStrategyComputer.m \
-	TestBasicBoard.m
+	TestBack.m
 
 OBJS:=$(SRCS:.m=.o)
 
