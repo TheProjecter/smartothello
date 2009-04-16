@@ -38,7 +38,7 @@ RM:=rm -rf
 OBJC:=$(GCC) $(INCPATH) 
 LINK:=$(GCC) $(LIBPATH)
 
-OBJCFLAGS+=$(CFLAGS)
+OBJCFLAGS+=$(CFLAGS) -Wall
 
 
 all: $(TARGET)
