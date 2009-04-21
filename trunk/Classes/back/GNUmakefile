@@ -39,7 +39,7 @@ OBJC:=$(GCC) $(INCPATH)
 LINK:=$(GCC) $(LIBPATH)
 
 OBJCFLAGS+=$(CFLAGS) -Wall
-
+LINKFLAGS+=-enable-auto-import
 
 all: $(TARGET)
 
@@ -50,7 +50,7 @@ all: $(TARGET)
 	$(OBJC) $(OBJCFLAGS) $< -c -o $@
 
 $(TARGET): $(OBJS)
-	$(LINK) $^ -o $@ $(LIBS)
+	$(LINK) $(LINKFLAGS) $^ -o $@ $(LIBS)
 
 clean:
 	$(RM) $(OBJS) $(DEPS) $(TARGET)
