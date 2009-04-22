@@ -104,8 +104,8 @@
    // Start at a random position on the board. This way, if two or
    // more moves are equally good, we'll take one of them at random.
    srand(time(NULL));
-   int rowStart = rand() * 8 / 100;
-   int colStart = rand() * 8 / 100;
+   int rowStart = rand() * 8.0 / RAND_MAX;
+   int colStart = rand() * 8.0 / RAND_MAX;
 
    // Check all valid moves.
    int i, j;
