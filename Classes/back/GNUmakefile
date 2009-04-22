@@ -39,7 +39,9 @@ OBJC:=$(GCC) $(INCPATH)
 LINK:=$(GCC) $(LIBPATH)
 
 OBJCFLAGS+=$(CFLAGS) -Wall
+ifeq ($(PLATFORM),gnu)
 LINKFLAGS+=-enable-auto-import
+endif
 
 all: $(TARGET)
 
