@@ -104,8 +104,8 @@
    // Start at a random position on the board. This way, if two or
    // more moves are equally good, we'll take one of them at random.
    srand(time(NULL));
-   int rowStart = 0; //rand() * 8.0 / RAND_MAX;
-   int colStart = 0; //rand() * 8.0 / RAND_MAX;
+   int rowStart = rand() * 8.0 / RAND_MAX;
+   int colStart = rand() * 8.0 / RAND_MAX;
 
    // Check all valid moves.
    int i, j;
@@ -123,15 +123,16 @@
             // Make the move. 
             struct SOComputerMove testMove = {{row, col}};
             SOBoardInterfaceObject testBoard = [board Clone];
+
+            [testBoard MakeMove: color == kSOBlack
+                             At: testMove.Move.row : testMove.Move.col];
+
             int score = [testBoard WhiteCount] - [testBoard BlackCount];
 
             // Check the board.
             int nextColor = -color;
             int forfeit = 0;
             BOOL isEndGame = FALSE;
-
-            [testBoard MakeMove: color == kSOBlack
-                             At: testMove.Move.row : testMove.Move.col];
 
             int opponentValidMoves = [testBoard GetValidMoveCount: nextColor == kSOBlack];
             if (opponentValidMoves == 0)
@@ -171,28 +172,13 @@
                }
 
                // It's not an end game so calculate the move rank.
-               else
-               {
+               else {
                   testMove.Rank =
                      ForfeitWeight * forfeit +
                      FrontierWeight  * ([testBoard BlackFrontierCount] - [testBoard WhiteFrontierCount]) +
                      MobilityWeight  * color * (validMoves - opponentValidMoves) +
                      StabilityWeight * ([testBoard WhiteSafeCount] - [testBoard BlackSafeCount]) +
                      score;
-                  printf("ForfeitWeight: %d\t", ForfeitWeight);
-                  printf("forfeit: %d\t", forfeit);
-                  printf("FrontierWeight: %d\t", FrontierWeight);
-                  printf("BlackFrontierCount: %d\t", [testBoard BlackFrontierCount]);
-                  printf("WhiteFrontierCount: %d\t", [testBoard WhiteFrontierCount]);
-                  printf("MobilityWeight: %d\t", MobilityWeight);
-                  printf("color: %d\t", color);
-                  printf("validMoves: %d\t", validMoves);
-                  printf("opponentValidMoves: %d\t", opponentValidMoves);
-                  printf("StabilityWeight: %d\t", StabilityWeight);
-                  printf("WhiteSafeCount: %d\t", [testBoard WhiteSafeCount]);
-                  printf("BlackSafeCount: %d\t", [testBoard BlackSafeCount]);
-                  printf("score: %d\t", score);
-                  printf("Rank: %d\n", testMove.Rank);
                }
             }
 
@@ -248,7 +234,6 @@
       }
 
    // Return the best move found.
-   printf("bestMove: %d, %d, %d\n", bestMove.Move.row, bestMove.Move.col, bestMove.Rank);
    return bestMove;
 }
 

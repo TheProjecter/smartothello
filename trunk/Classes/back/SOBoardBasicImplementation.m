@@ -248,7 +248,7 @@
    BOOL hasUnsafeSide1 = FALSE, hasUnsafeSide2 = FALSE;
 
    // West, East
-   for (c = 0; c < row && !hasSpaceSide1; c++) {
+   for (c = 0; c < col && !hasSpaceSide1; c++) {
       if (Board[row][c] == kSOEmpty) {
          hasSpaceSide1 = TRUE;
       } else if (Board[row][c] != color
@@ -268,7 +268,7 @@
 
    if ( (hasSpaceSide1 && hasSpaceSide2)
          || (hasSpaceSide1 && hasUnsafeSide2)
-         || (hasUnsafeSide1 && hasUnsafeSide2)) {
+         || (hasUnsafeSide1 && hasSpaceSide2)) {
       return TRUE;
    }
    // North, South
