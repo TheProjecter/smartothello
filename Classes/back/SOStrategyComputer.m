@@ -56,7 +56,7 @@
 -(id) init {
    self = [super init];
    if (self) {
-      [self SetAILevel: kSOAIBeginner];
+      [self SetAILevel: kSOAIIntermediate];
    }
    return self;
 }
@@ -74,13 +74,13 @@
 }
 
 -(struct SOMove) CalculateNextMove: (id <SOBoardInterface>)    board
-                           Against: (enum SOBoardCellStatus)   opponentColor
+                           Against: (enum SOBoardCellStatus)   color
 {
    int alpha = MAX_RANK + 64;
    int beta  = -alpha;
    [self AdjustLookAheadDepth: board];
    return [self CalculateNextMove: board
-                                 : -opponentColor
+                                 : color
                                  : 1
                                  : alpha
                                  : beta].Move;
@@ -104,8 +104,8 @@
    // Start at a random position on the board. This way, if two or
    // more moves are equally good, we'll take one of them at random.
    srand(time(NULL));
-   int rowStart = rand() * 8.0 / RAND_MAX;
-   int colStart = rand() * 8.0 / RAND_MAX;
+   int rowStart = 0; //rand() * 8.0 / RAND_MAX;
+   int colStart = 0; //rand() * 8.0 / RAND_MAX;
 
    // Check all valid moves.
    int i, j;
@@ -116,7 +116,7 @@
          int row = (rowStart + i) % 8;
          int col = (colStart + j) % 8;
 
-         if ([board IsValidMove: color == kSOBlack
+         if (kSOAvailable == [board IsValidMove: color == kSOBlack
                              At: row : col])
          {
 
@@ -172,12 +172,28 @@
 
                // It's not an end game so calculate the move rank.
                else
+               {
                   testMove.Rank =
                      ForfeitWeight * forfeit +
                      FrontierWeight  * ([testBoard BlackFrontierCount] - [testBoard WhiteFrontierCount]) +
                      MobilityWeight  * color * (validMoves - opponentValidMoves) +
                      StabilityWeight * ([testBoard WhiteSafeCount] - [testBoard BlackSafeCount]) +
                      score;
+                  printf("ForfeitWeight: %d\t", ForfeitWeight);
+                  printf("forfeit: %d\t", forfeit);
+                  printf("FrontierWeight: %d\t", FrontierWeight);
+                  printf("BlackFrontierCount: %d\t", [testBoard BlackFrontierCount]);
+                  printf("WhiteFrontierCount: %d\t", [testBoard WhiteFrontierCount]);
+                  printf("MobilityWeight: %d\t", MobilityWeight);
+                  printf("color: %d\t", color);
+                  printf("validMoves: %d\t", validMoves);
+                  printf("opponentValidMoves: %d\t", opponentValidMoves);
+                  printf("StabilityWeight: %d\t", StabilityWeight);
+                  printf("WhiteSafeCount: %d\t", [testBoard WhiteSafeCount]);
+                  printf("BlackSafeCount: %d\t", [testBoard BlackSafeCount]);
+                  printf("score: %d\t", score);
+                  printf("Rank: %d\n", testMove.Rank);
+               }
             }
 
             // Otherwise, perform a look ahead.
@@ -232,6 +248,7 @@
       }
 
    // Return the best move found.
+   printf("bestMove: %d, %d, %d\n", bestMove.Move.row, bestMove.Move.col, bestMove.Rank);
    return bestMove;
 }
 
