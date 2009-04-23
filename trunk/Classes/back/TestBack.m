@@ -22,7 +22,7 @@ struct SOMove GetMove(
 
 int main(void) {
    SOBoardBasicImplementation *board    = [[SOBoardBasicImplementation alloc] init];
-   SOStrategyComputer         *computer = [[SOStrategyComputer alloc] initWithAILevel: kSOAIExpert];
+   SOStrategyComputer         *computer = [[SOStrategyComputer alloc] init];
    int row, col;
    BOOL isBlack         = TRUE;
    BOOL isComputerBlack = FALSE;

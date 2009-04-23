@@ -38,5 +38,5 @@ enum SOStrategyComputerAILevel {
  * implement protocol SOStrategyInterface
  */
 -(struct SOMove) CalculateNextMove: (id <SOBoardInterface>)    board
-                           Against: (enum SOBoardCellStatus)   opponentColor;
+                           Against: (enum SOBoardCellStatus)   color;
 @end

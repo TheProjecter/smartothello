@@ -192,7 +192,7 @@
          for (c = 0; c < SO_BOARD_MAX_Y; c++) {
             if(Board[r][c] != kSOEmpty
                   && !SafeDiscs[r][c]
-                  && [self IsOutFlankable: r :c]) {
+                  && ![self IsOutFlankable: r :c]) {
                SafeDiscs[r][c] = TRUE;
                statusChanged = TRUE;
             }
@@ -211,8 +211,8 @@
                         && r + dr < SO_BOARD_MAX_X
                         && c + dc >= 0
                         && c + dc < SO_BOARD_MAX_Y
-                        && Board[r][c] == kSOEmpty) {
-                     isFrontier = FALSE;
+                        && Board[r+dr][c+dc] == kSOEmpty) {
+                     isFrontier = TRUE;
                   }
                }
             }
