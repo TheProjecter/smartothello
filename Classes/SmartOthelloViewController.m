@@ -28,8 +28,7 @@
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	// Here you can add something extra. For example, you can refresh the settings here, See AppSettings project in Begin iPhone Development
+- (void)refreshSettings {
 	skillLevel = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloSkillLevelKey];
 	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
 	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
@@ -41,7 +40,12 @@
 	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
 	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
 	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
-	// [(SmartOthelloView *)(self.view) restartGame];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	// Here you can add something extra. For example, you can refresh the settings here, See AppSettings project in Begin iPhone Development
+	[self refreshSettings];
+
 	[super viewDidAppear:animated];
 }
 
@@ -64,17 +68,8 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	skillLevel = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloSkillLevelKey];
-	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
-	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
-	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
-	playSound = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloPlaySoundKey];
-	shakeToRestart = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShakeToRestartKey];
-	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
-	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
-	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
-	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
-	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
+	[self refreshSettings];
+	
 	[(SmartOthelloView *)(self.view) restartGame];
 	UIAccelerometer *accel = [UIAccelerometer sharedAccelerometer];
 	accel.delegate = self;
