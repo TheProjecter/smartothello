@@ -22,7 +22,7 @@
     if ([self class] == [SmartOthelloAppDelegate class]) {
         // Register a default value for the Skill level. 
         // This will be used if the user hasn't set the Skill level.
-        NSNumber *defaultSkillLevel = [NSNumber numberWithInt:Beginner];
+        NSNumber *defaultSkillLevel = [NSNumber numberWithInt:kSOAIBeginner];
         NSDictionary *resourceDict = [NSDictionary dictionaryWithObject:defaultSkillLevel forKey:SmartOthelloSkillLevelKey];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:resourceDict];
 		
