@@ -35,3 +35,19 @@
 // Define the accelerometer parameters
 #define kAccelerationThreshold		2.2
 #define kUpdateInterval			(1.0f/10.0f)
+
+#define SO_BOARD_MAX_X 8
+#define SO_BOARD_MAX_Y 8 
+
+
+enum SOBoardCellStatus{
+   kSOEmpty = 0,
+   kSOBlack = -1,
+   kSOWhite = 1
+};
+
+enum SOBoardMoveResult {
+   kSOAvailable,
+   kSOOccupied,
+   kSOChangeNone
+};
