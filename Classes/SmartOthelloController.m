@@ -313,8 +313,8 @@
 }
 
 -(void) SetAILevel {
-   int difficulty = skillLevel;
-   switch (difficulty) {
+   int Difficulty = skillLevel;
+   switch (Difficulty) {
       case kSOAIBeginner:
          ForfeitWeight      =  2;
          FrontierWeight     =  1;
@@ -347,7 +347,12 @@
          break;
    }
 
-   LookAheadDepth = difficulty + 3;
+   LookAheadDepth = Difficulty + 3;
+	
+   // Near the end of the game, when there are relatively few moves
+   // left, set the look-ahead depth to do an exhaustive search. ??? not support options yet
+   if (moveNumber >= (55 - Difficulty))
+      LookAheadDepth = [board EmptyCount];
 }
 
 -(int) AdjustLookAheadDepth: (SmartOthelloBoard *) newBoard
@@ -355,8 +360,8 @@
    // in the beginning, we have 4 pieces
    int emptyCount = [newBoard EmptyCount];
    int moveCount  = SO_BOARD_MAX_X * SO_BOARD_MAX_Y - emptyCount -4;
-   LookAheadDepth = Difficulty + 3;
-   if (moveCount >= 55 - Difficulty) {
+   LookAheadDepth = skillLevel + 3;
+   if (moveCount >= 55 - skillLevel) {
       LookAheadDepth = emptyCount;
    }
    return LookAheadDepth;
@@ -366,7 +371,7 @@
 {
    int alpha = MAX_RANK + 64;
    int beta  = -alpha;
-   [self AdjustLookAheadDepth: newBoard];
+   // [self AdjustLookAheadDepth: newBoard];
    return [self CalculateNextMove: newBoard
                                  : currentColor
                                  : 1
