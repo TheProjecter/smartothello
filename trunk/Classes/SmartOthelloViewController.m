@@ -44,7 +44,17 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	// Here you can add something extra. For example, you can refresh the settings here, See AppSettings project in Begin iPhone Development
+	// Check if the settings of players are changed
+	int newBlackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
+	int newWhitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
+	BOOL needRestartGame = (newBlackPlayer != blackPlayer) || (newWhitePlayer != whitePlayer);
+	
 	[self refreshSettings];
+	
+	// Restart the game if necessary
+	if (needRestartGame) {
+		[(SmartOthelloView *)(self.view) restartGame];
+	}
 
 	[super viewDidAppear:animated];
 }
