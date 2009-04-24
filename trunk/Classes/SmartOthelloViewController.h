@@ -26,6 +26,7 @@
 @property BOOL playSound;
 @property BOOL shakeToRestart;
 
+- (void)refreshSettings;
 - (IBAction)toggleView:(id)sender;
 - (IBAction)infoButtonClicked:(id)sender;
 - (IBAction)newButtonClicked:(id)sender;
