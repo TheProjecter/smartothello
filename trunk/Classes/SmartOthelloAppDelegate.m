@@ -37,6 +37,14 @@
 		NSNumber *defaultShowPossibleMoves = [NSNumber numberWithBool:YES];
         NSDictionary *resourcePossibleMovesDict = [NSDictionary dictionaryWithObject:defaultShowPossibleMoves forKey:SmartOthelloShowPossibleMovesKey];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:resourcePossibleMovesDict];
+		
+		NSNumber *defaultPlaySound = [NSNumber numberWithBool:YES];
+        NSDictionary *resourcePlaySoundDict = [NSDictionary dictionaryWithObject:defaultPlaySound forKey:SmartOthelloPlaySoundKey];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:resourcePlaySoundDict];
+		
+		NSNumber *defaultShakeToRestart = [NSNumber numberWithBool:YES];
+        NSDictionary *resourceShakeToRestartDict = [NSDictionary dictionaryWithObject:defaultShakeToRestart forKey:SmartOthelloShakeToRestartKey];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:resourceShakeToRestartDict];
     }
 }
 

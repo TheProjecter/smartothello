@@ -18,6 +18,8 @@
 @synthesize blackPlayer;
 @synthesize whitePlayer;
 @synthesize showPossibleMoves;
+@synthesize playSound;
+@synthesize shakeToRestart;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -32,10 +34,13 @@
 	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
 	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
 	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
+	playSound = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloPlaySoundKey];
+	shakeToRestart = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShakeToRestartKey];
 	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
 	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
 	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
 	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
+	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
 	// [(SmartOthelloView *)(self.view) restartGame];
 	[super viewDidAppear:animated];
 }
@@ -63,11 +68,17 @@
 	blackPlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloBlackPlayerKey];
 	whitePlayer = [[NSUserDefaults standardUserDefaults] integerForKey:SmartOthelloWhitePlayerKey];
 	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
+	playSound = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloPlaySoundKey];
+	shakeToRestart = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShakeToRestartKey];
 	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
 	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
 	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
 	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
+	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
 	[(SmartOthelloView *)(self.view) restartGame];
+	UIAccelerometer *accel = [UIAccelerometer sharedAccelerometer];
+	accel.delegate = self;
+	accel.updateInterval = kUpdateInterval;
     [super viewDidLoad];
 }
 
@@ -89,6 +100,15 @@
 - (void)dealloc {
     [super dealloc];
 }
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
+	if (shakeToRestart) {
+		if (fabsf(acceleration.x) > kAccelerationThreshold || fabsf(acceleration.y) > kAccelerationThreshold || fabsf(acceleration.z) > kAccelerationThreshold) {
+			[(SmartOthelloView *)(self.view) restartGame];
+		}
+	}
+}
+
 
 #pragma mark ---- control callbacks ----
 
