@@ -23,7 +23,10 @@
 {
 	if((self = [super initWithCoder:coder])) {
 		// Do initialization here
+		othello = [[SmartOthelloController alloc] initWithView:self];
 		[self initImages];
+		NSString *path = [[NSBundle mainBundle] pathForResource:@"tap" ofType:@"aif"];
+		AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &soundID);
 	}
 	return self;
 }
@@ -32,12 +35,19 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	int i;
+	int j;
 	float black[4] = {0, 0, 0, 1};
     CGRect r = CGRectMake(0.0, 0.0, 320.0, 320.0);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
     CGContextDrawImage(ctx, r, backImage);
+	
+	for (i = 0; i < DIMENSION; i++) {
+        for (j = 0; j < DIMENSION; j++) {
+            [self renderCellAtRow:i Column:j];
+        }
+    }
     	
 	//Draw Board
     CGContextSetLineWidth(ctx, 1.0);
@@ -58,16 +68,25 @@
         CGContextDrawPath(ctx, kCGPathFillStroke);
     }
 	
-	//Draw the initial discs
-	CGRect r1 = CGRectMake(120.0, 120.0, 40.0, 40.0);
-	CGContextDrawImage(ctx, r1, whiteImage);
-	CGRect r2 = CGRectMake(160.0, 160.0, 40.0, 40.0);
-	CGContextDrawImage(ctx, r2, whiteImage);
-	CGRect r3 = CGRectMake(120.0, 160.0, 40.0, 40.0);
-	CGContextDrawImage(ctx, r3, blackImage);
-	CGRect r4 = CGRectMake(160.0, 120.0, 40.0, 40.0);
-	CGContextDrawImage(ctx, r4, blackImage);
-	
+	// Play the sound
+	if (playSound) {
+		AudioServicesPlaySystemSound (soundID);	
+	}
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [touches anyObject];
+	CGPoint location = [touch locationInView:self];// <label id="code.DrawView.location"/>
+	CGRect rect = CGRectMake(0.0, 0.0, 320.0, 320.0);;
+	int cellWidth = (int)rect.size.width/DIMENSION;
+    int cellHeight = (int)rect.size.height/DIMENSION;
+    
+    int x = (int)location.x / cellWidth;
+    int y = (int)location.y / cellHeight;
+	if(location.x < 320.0 && location.y < 320.0) {
+		[othello boardClickedAtRow:x Column:y];
+		[self setNeedsDisplay];
+	}
 }
 
 - (void) initImages {
@@ -122,11 +141,113 @@
     blackImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
     
     CGDataProviderRelease(provider);
+	
+	//White last image
+    p = [[NSBundle mainBundle] pathForResource: @"whitelast" ofType: @"png"];
+    path = CFStringCreateWithCString(NULL, 
+									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
+									 kCFStringEncodingUTF8);
+	
+    url = CFURLCreateWithFileSystemPath(NULL, path, kCFURLPOSIXPathStyle, 0);
+    provider = CGDataProviderCreateWithURL(url);
+	
+    CFRelease(path);
+    CFRelease(url);
+    whiteLastImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
+    
+    CGDataProviderRelease(provider);
+
+	//Black last image
+    p = [[NSBundle mainBundle] pathForResource: @"blacklast" ofType: @"png"];
+    path = CFStringCreateWithCString(NULL, 
+									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
+									 kCFStringEncodingUTF8);
+	
+    url = CFURLCreateWithFileSystemPath(NULL, path, kCFURLPOSIXPathStyle, 0);
+    provider = CGDataProviderCreateWithURL(url);
+	
+    CFRelease(path);
+    CFRelease(url);
+    blackLastImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
+    
+    CGDataProviderRelease(provider);	
+	
+	//Hint image
+    p = [[NSBundle mainBundle] pathForResource: @"hint" ofType: @"png"];
+    path = CFStringCreateWithCString(NULL, 
+									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
+									 kCFStringEncodingUTF8);
+	
+    url = CFURLCreateWithFileSystemPath(NULL, path, kCFURLPOSIXPathStyle, 0);
+    provider = CGDataProviderCreateWithURL(url);
+	
+    CFRelease(path);
+    CFRelease(url);
+    hintImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
+    
+    CGDataProviderRelease(provider);	
 }
 
+- (void)renderCellAtRow:(int)row Column:(int)col {
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+	
+    CGRect rect = CGRectMake(row*40.0, col*40.0, 40.0, 40.0);
+	
+    if ([othello getsquareContentsAtRow:row Column:col] == Black) {
+		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {
+			CGContextDrawImage(ctx, rect, blackLastImage);
+		}
+		else {
+			CGContextDrawImage(ctx, rect, blackImage);
+		}
+    }
+    else if ([othello getsquareContentsAtRow:row Column:col] == White) {
+		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {
+			CGContextDrawImage(ctx, rect, whiteLastImage);
+		}
+		else {
+			CGContextDrawImage(ctx, rect, whiteImage);
+		}
+    }
+	else {
+		if([othello isValidMoveForColor:([othello currentColor]) Row:row Column:col] && showPossibleMoves) {
+			CGContextDrawImage(ctx, rect, hintImage);
+		}
+	}
+}
+
+- (void)restartGame {
+	[othello startGame];
+}
+
+- (void)setSkillLevel:(int)level {
+	[othello setSkillLevel:level];
+}
+
+- (void)setBlackPlayer:(int)player {
+	[othello setBlackPlayer:player];
+}
+
+- (void)setWhitePlayer:(int)player {
+	[othello setWhitePlayer:player];
+}
+
+- (void)setShowPossibleMoves:(BOOL)show {
+	showPossibleMoves = show;
+	[self setNeedsDisplay];
+}
+
+- (void)setPlaySound:(BOOL)sound {
+	playSound = sound;
+}
+
+- (void)undoMove {
+	[othello undoMove];
+}
 
 - (void)dealloc {
 	// ??? release the 3 images here or not?
+	[othello release];
     [super dealloc];
 }
 
