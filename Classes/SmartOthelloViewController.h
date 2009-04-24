@@ -9,18 +9,22 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface SmartOthelloViewController : UIViewController {
+@interface SmartOthelloViewController : UIViewController <UIAccelerometerDelegate> {
 	id flipDelegate;
 	int skillLevel;
 	int blackPlayer;
 	int whitePlayer;
 	BOOL showPossibleMoves;
+	BOOL playSound;
+	BOOL shakeToRestart;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
 @property int skillLevel;
 @property int blackPlayer;
 @property int whitePlayer;
 @property BOOL showPossibleMoves;
+@property BOOL playSound;
+@property BOOL shakeToRestart;
 
 - (IBAction)toggleView:(id)sender;
 - (IBAction)infoButtonClicked:(id)sender;

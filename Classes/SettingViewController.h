@@ -15,12 +15,16 @@
 	IBOutlet UISegmentedControl *blackPlayerSegmentControl;
 	IBOutlet UISegmentedControl *whitePlayerSegmentControl;
 	IBOutlet UISwitch *showPossibleMovesSwitch;
+	IBOutlet UISwitch *playSoundSwitch;
+	IBOutlet UISwitch *shakeToRestartSwitch;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
 @property (nonatomic, retain) UISegmentedControl *skllLevelSegmentControl;
 @property (nonatomic, retain) UISegmentedControl *blackPlayerSegmentControl;
 @property (nonatomic, retain) UISegmentedControl *whitePlayerSegmentControl;
 @property (nonatomic, retain) UISwitch *showPossibleMovesSwitch;
+@property (nonatomic, retain) UISwitch *playSoundSwitch;
+@property (nonatomic, retain) UISwitch *shakeToRestartSwitch;
 
 - (IBAction)toggleView:(id)sender;
 @end

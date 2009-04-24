@@ -25,7 +25,13 @@
 #define SmartOthelloBlackPlayerKey       @"SmartOthelloBlackPlayerKey"
 #define SmartOthelloWhitePlayerKey       @"SmartOthelloWhitePlayerKey"
 #define SmartOthelloShowPossibleMovesKey @"SmartOthelloShowPossibleMovesKey"
+#define SmartOthelloPlaySoundKey         @"SmartOthelloPlaySoundKey"
+#define SmartOthelloShakeToRestartKey    @"SmartOthelloShakeToRestartKey"
 
 // Define the players.
 #define PlayerHuman    0
 #define PlayerComputer 1
+
+// Define the accelerometer parameters
+#define kAccelerationThreshold		2.2
+#define kUpdateInterval			(1.0f/10.0f)

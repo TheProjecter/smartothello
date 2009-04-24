@@ -16,6 +16,8 @@
 @synthesize blackPlayerSegmentControl;
 @synthesize whitePlayerSegmentControl;
 @synthesize showPossibleMovesSwitch;
+@synthesize playSoundSwitch;
+@synthesize shakeToRestartSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -32,6 +34,8 @@
 	[defaults setInteger:blackPlayerSegmentControl.selectedSegmentIndex forKey:SmartOthelloBlackPlayerKey];
 	[defaults setInteger:whitePlayerSegmentControl.selectedSegmentIndex forKey:SmartOthelloWhitePlayerKey];
 	[defaults setBool:showPossibleMovesSwitch.on forKey:SmartOthelloShowPossibleMovesKey];
+	[defaults setBool:playSoundSwitch.on forKey:SmartOthelloPlaySoundKey];
+	[defaults setBool:shakeToRestartSwitch.on forKey:SmartOthelloShakeToRestartKey];
 	[super viewWillDisappear:animated];
 }
 
@@ -74,6 +78,8 @@
 	blackPlayerSegmentControl.selectedSegmentIndex = [defaults integerForKey:SmartOthelloBlackPlayerKey];
 	whitePlayerSegmentControl.selectedSegmentIndex = [defaults integerForKey:SmartOthelloWhitePlayerKey];
 	showPossibleMovesSwitch.on = [defaults boolForKey:SmartOthelloShowPossibleMovesKey];
+	playSoundSwitch.on = [defaults boolForKey:SmartOthelloPlaySoundKey];
+	shakeToRestartSwitch.on = [defaults boolForKey:SmartOthelloShakeToRestartKey];
 }
 
 
@@ -93,6 +99,11 @@
 
 - (void)dealloc {
 	[skllLevelSegmentControl release];
+	[blackPlayerSegmentControl release];
+	[whitePlayerSegmentControl release];
+	[showPossibleMovesSwitch release];
+	[playSoundSwitch release];
+	[shakeToRestartSwitch release];
     [super dealloc];
 }
 
