@@ -50,8 +50,8 @@
       int r, c;
       for(r = 0; r < SO_BOARD_MAX_X; r++) {
          for(c = 0; c < SO_BOARD_MAX_Y; c++) {
-            self->Board[r][c]     = [board GetCellStatus: r: c];
-            self->SafeDiscs[r][c] = [board IsDiscSafe: r: c];
+            Board[r][c]     = [board GetCellStatus: r: c];
+            SafeDiscs[r][c] = [board IsDiscSafe: r: c];
          }
       }
       [self UpdateCounts];

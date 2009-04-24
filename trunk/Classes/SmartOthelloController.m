@@ -68,7 +68,7 @@
 	}
 	
 	// Initialize the last move color.
-	lastMoveColor = White;
+	lastMoveColor = kSOWhite;
 	
 	// Clear the suspend computer play flag.
 	isComputerPlaySuspended = NO;
@@ -77,8 +77,8 @@
 	[board ResetBoard];
 	[view setNeedsDisplay];
 	
-	// Set the first player. ??? get FirstMove parameter from the options
-	currentColor = Black;
+	// Set the first player, always let black to start the game.
+	currentColor = kSOBlack;
 	
 	// Start the first turn.
 	[self startTurn];
@@ -94,17 +94,17 @@
 	gameState = GameOver;
 	
 	// For a computer vs. user game, determine who played what color.
-	int computerColor = Empty;
-	int userColor     = Empty;
-	if ([self isComputerPlayerForColor:Black] && ![self isComputerPlayerForColor:White])
+	int computerColor = kSOEmpty;
+	int userColor     = kSOEmpty;
+	if ([self isComputerPlayerForColor:kSOBlack] && ![self isComputerPlayerForColor:kSOWhite])
 	{
-		computerColor = Black;
-		userColor = White;
+		computerColor = kSOBlack;
+		userColor = kSOWhite;
 	}
-	if ([self isComputerPlayerForColor:White] && ![self isComputerPlayerForColor:Black])
+	if ([self isComputerPlayerForColor:kSOWhite] && ![self isComputerPlayerForColor:kSOBlack])
 	{
-		computerColor = White;
-		userColor = Black;
+		computerColor = kSOWhite;
+		userColor = kSOBlack;
 	}
 	
 	// Update the status message. ??? definitely we need to tell the player who wins the game, currently not support
@@ -158,21 +158,11 @@
 	else {
 		// Set the game state.
 		gameState = InPlayerMove;
-		
-		// Show valid moves, if that option is active. ??? not supported yet
-		/*
-		if (this.options.ShowValidMoves) {
-			[self highlightValidMoves];
-			[view setNeedsDisplay];
-		}
-		*/
 	}
 }
 
 - (BOOL)isComputerPlayerForColor:(int)color {
-	// not support options yet ???
-	// return ((this.options.ComputerPlaysBlack && color == Black) || (this.options.ComputerPlaysWhite && color == White));
-	return ((color == Black && blackPlayer == PlayerComputer) || (color == White && whitePlayer == PlayerComputer));
+	return ((color == kSOBlack && blackPlayer == PlayerComputer) || (color == kSOWhite && whitePlayer == PlayerComputer));
 }
 
 - (void)makeMoveAtRow:(int)row Column:(int)col {
@@ -296,18 +286,18 @@
 		return;
 		
 	// If the move is valid, make it.
-	if ([board IsValidMove: currentColor == kSOBlack At: row :col]) {
+	if (kSOAvailable == [board IsValidMove: currentColor == kSOBlack At: row :col]) {
 		// Make the move.
 		[self makePlayerMoveAtRow:row Column:col];
 	}
 }
 
-- (int)getsquareContentsAtRow:(int)row Column:(int)col {
+- (enum SOBoardCellStatus)getsquareContentsAtRow:(int)row Column:(int)col {
 	return [board GetCellStatus: row :col];
 }
 
 - (BOOL)isValidMoveForColor:(int)color Row:(int)row Column:(int)col {
-	return [board IsValidMove: color == kSOBlack At: row :col];
+	return (kSOAvailable == [board IsValidMove: color == kSOBlack At: row :col]);
 }
 
 - (void)setSkillLevel:(int)level {

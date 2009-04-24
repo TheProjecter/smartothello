@@ -42,7 +42,7 @@
 	int blackPlayer;
 	int whitePlayer;
 	
-	// Defines an array for storing the move history. ??? not supported yet
+	// Defines an array for storing the move history. 
 	NSMutableArray *moveHistory;
 
 	// Used to track which player made the last move.
@@ -76,7 +76,7 @@
 - (void)restoreGameAtStep:(int)step;
 - (void)undoMove;
 - (void)boardClickedAtRow:(int)row Column:(int)col;
-- (int)getsquareContentsAtRow:(int)row Column:(int)col;
+- (enum SOBoardCellStatus)getsquareContentsAtRow:(int)row Column:(int)col;
 - (BOOL)isValidMoveForColor:(int)color Row:(int)row Column:(int)col;
 - (void)setSkillLevel:(int)level;
 - (void)setBlackPlayer:(int)player;

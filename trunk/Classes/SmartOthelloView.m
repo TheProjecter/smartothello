@@ -43,8 +43,8 @@
 	
     CGContextDrawImage(ctx, r, backImage);
 	
-	for (i = 0; i < DIMENSION; i++) {
-        for (j = 0; j < DIMENSION; j++) {
+	for (i = 0; i < SO_BOARD_MAX_X; i++) {
+        for (j = 0; j < SO_BOARD_MAX_Y; j++) {
             [self renderCellAtRow:i Column:j];
         }
     }
@@ -78,8 +78,8 @@
 	UITouch *touch = [touches anyObject];
 	CGPoint location = [touch locationInView:self];// <label id="code.DrawView.location"/>
 	CGRect rect = CGRectMake(0.0, 0.0, 320.0, 320.0);;
-	int cellWidth = (int)rect.size.width/DIMENSION;
-    int cellHeight = (int)rect.size.height/DIMENSION;
+	int cellWidth = (int)rect.size.width/SO_BOARD_MAX_X;
+    int cellHeight = (int)rect.size.height/SO_BOARD_MAX_Y;
     
     int x = (int)location.x / cellWidth;
     int y = (int)location.y / cellHeight;
@@ -193,7 +193,7 @@
 	
     CGRect rect = CGRectMake(row*40.0, col*40.0, 40.0, 40.0);
 	
-    if ([othello getsquareContentsAtRow:row Column:col] == Black) {
+    if ([othello getsquareContentsAtRow:row Column:col] == kSOBlack) {
 		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {
 			CGContextDrawImage(ctx, rect, blackLastImage);
 		}
@@ -201,7 +201,7 @@
 			CGContextDrawImage(ctx, rect, blackImage);
 		}
     }
-    else if ([othello getsquareContentsAtRow:row Column:col] == White) {
+    else if ([othello getsquareContentsAtRow:row Column:col] == kSOWhite) {
 		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {
 			CGContextDrawImage(ctx, rect, whiteLastImage);
 		}
