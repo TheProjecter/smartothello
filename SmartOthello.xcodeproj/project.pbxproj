@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		5C7C999B0F9F649C00F2D74F /* tap.aif in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C999A0F9F649C00F2D74F /* tap.aif */; };
+		5C7C9AEC0F9F71B700F2D74F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7C9AEB0F9F71B700F2D74F /* AudioToolbox.framework */; };
 		5C7F3B710F6FE182009606D6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7F3B700F6FE182009606D6 /* icon.png */; };
 		5C7F3BCB0F6FEFA5009606D6 /* AboutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7F3BCA0F6FEFA5009606D6 /* AboutView.xib */; };
 		5C7F3C7D0F6FF448009606D6 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7F3C7B0F6FF448009606D6 /* AboutViewController.m */; };
@@ -25,6 +27,13 @@
 		5C8462D90F6E92EA00B3254F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8462D80F6E92EA00B3254F /* SettingViewController.m */; };
 		5C8462E10F6E953C00B3254F /* SmartOthelloView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8462E00F6E953C00B3254F /* SmartOthelloView.xib */; };
 		5C8462E50F6E954D00B3254F /* SettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8462E40F6E954D00B3254F /* SettingView.xib */; };
+		5C8A63060F77C21500317E40 /* ComputerMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A62FF0F77C21500317E40 /* ComputerMove.m */; };
+		5C8A63080F77C21500317E40 /* SmartOthelloBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A63040F77C21500317E40 /* SmartOthelloBoard.m */; };
+		5CA95C890F7A682F00BCE55D /* blacklast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C860F7A682F00BCE55D /* blacklast.png */; };
+		5CA95C8A0F7A682F00BCE55D /* hint.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C870F7A682F00BCE55D /* hint.png */; };
+		5CA95C8B0F7A682F00BCE55D /* whitelast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C880F7A682F00BCE55D /* whitelast.png */; };
+		5CC83FF30F8A3D29008BE2C4 /* MoveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */; };
+		5CF3D5D40F77D626009CE158 /* SmartOthelloController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3D5D20F77D626009CE158 /* SmartOthelloController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +46,8 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SmartOthello_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartOthello_Prefix.pch; sourceTree = "<group>"; };
+		5C7C999A0F9F649C00F2D74F /* tap.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tap.aif; sourceTree = "<group>"; };
+		5C7C9AEB0F9F71B700F2D74F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5C7F3B700F6FE182009606D6 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		5C7F3BCA0F6FEFA5009606D6 /* AboutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutView.xib; sourceTree = "<group>"; };
 		5C7F3C7B0F6FF448009606D6 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -54,6 +65,18 @@
 		5C8462D80F6E92EA00B3254F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		5C8462E00F6E953C00B3254F /* SmartOthelloView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmartOthelloView.xib; sourceTree = "<group>"; };
 		5C8462E40F6E954D00B3254F /* SettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingView.xib; sourceTree = "<group>"; };
+		5C8A62FF0F77C21500317E40 /* ComputerMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputerMove.m; sourceTree = "<group>"; };
+		5C8A63000F77C21500317E40 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		5C8A63010F77C21500317E40 /* ComputerMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputerMove.h; sourceTree = "<group>"; };
+		5C8A63040F77C21500317E40 /* SmartOthelloBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartOthelloBoard.m; sourceTree = "<group>"; };
+		5C8A63050F77C21500317E40 /* SmartOthelloBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartOthelloBoard.h; sourceTree = "<group>"; };
+		5CA95C860F7A682F00BCE55D /* blacklast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacklast.png; sourceTree = "<group>"; };
+		5CA95C870F7A682F00BCE55D /* hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hint.png; sourceTree = "<group>"; };
+		5CA95C880F7A682F00BCE55D /* whitelast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelast.png; sourceTree = "<group>"; };
+		5CC83FF10F8A3D29008BE2C4 /* MoveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveRecord.h; sourceTree = "<group>"; };
+		5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveRecord.m; sourceTree = "<group>"; };
+		5CF3D5D20F77D626009CE158 /* SmartOthelloController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartOthelloController.m; sourceTree = "<group>"; };
+		5CF3D5D30F77D626009CE158 /* SmartOthelloController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartOthelloController.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +88,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				5C7C9AEC0F9F71B700F2D74F /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +98,15 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5C8A63000F77C21500317E40 /* Constants.h */,
+				5C8A63010F77C21500317E40 /* ComputerMove.h */,
+				5C8A62FF0F77C21500317E40 /* ComputerMove.m */,
+				5CC83FF10F8A3D29008BE2C4 /* MoveRecord.h */,
+				5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */,
+				5C8A63050F77C21500317E40 /* SmartOthelloBoard.h */,
+				5C8A63040F77C21500317E40 /* SmartOthelloBoard.m */,
+				5CF3D5D30F77D626009CE158 /* SmartOthelloController.h */,
+				5CF3D5D20F77D626009CE158 /* SmartOthelloController.m */,
 				5C7F3C7C0F6FF448009606D6 /* AboutViewController.h */,
 				5C7F3C7B0F6FF448009606D6 /* AboutViewController.m */,
 				5C8462D20F6E92D700B3254F /* SmartOthelloViewController.h */,
@@ -122,6 +155,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5C7C999A0F9F649C00F2D74F /* tap.aif */,
+				5CA95C860F7A682F00BCE55D /* blacklast.png */,
+				5CA95C870F7A682F00BCE55D /* hint.png */,
+				5CA95C880F7A682F00BCE55D /* whitelast.png */,
 				5C7F3C880F6FF637009606D6 /* default.png */,
 				5C7F3C890F6FF637009606D6 /* black.png */,
 				5C7F3C8A0F6FF637009606D6 /* white.png */,
@@ -138,6 +175,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C7C9AEB0F9F71B700F2D74F /* AudioToolbox.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -195,6 +233,10 @@
 				5C7F3C8B0F6FF637009606D6 /* default.png in Resources */,
 				5C7F3C8C0F6FF637009606D6 /* black.png in Resources */,
 				5C7F3C8D0F6FF637009606D6 /* white.png in Resources */,
+				5CA95C890F7A682F00BCE55D /* blacklast.png in Resources */,
+				5CA95C8A0F7A682F00BCE55D /* hint.png in Resources */,
+				5CA95C8B0F7A682F00BCE55D /* whitelast.png in Resources */,
+				5C7C999B0F9F649C00F2D74F /* tap.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +254,10 @@
 				5C8462D90F6E92EA00B3254F /* SettingViewController.m in Sources */,
 				5C7F3C7D0F6FF448009606D6 /* AboutViewController.m in Sources */,
 				5C7F3C810F6FF490009606D6 /* SmartOthelloView.m in Sources */,
+				5C8A63060F77C21500317E40 /* ComputerMove.m in Sources */,
+				5C8A63080F77C21500317E40 /* SmartOthelloBoard.m in Sources */,
+				5CF3D5D40F77D626009CE158 /* SmartOthelloController.m in Sources */,
+				5CC83FF30F8A3D29008BE2C4 /* MoveRecord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
