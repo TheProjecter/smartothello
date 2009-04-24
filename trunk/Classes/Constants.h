@@ -51,3 +51,13 @@ enum SOBoardMoveResult {
    kSOOccupied,
    kSOChangeNone
 };
+
+#define MAX_INT  (int)((unsigned int)(-1) >> 1)
+#define MAX_RANK (MAX_INT - 64)
+
+enum SOStrategyComputerAILevel {
+   kSOAIBeginner = 0,
+   kSOAIIntermediate,
+   kSOAIAdvanced,
+   kSOAIExpert
+};
