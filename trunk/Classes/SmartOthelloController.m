@@ -419,7 +419,7 @@
             // Check the board.
             int nextColor = -color;
             int forfeit = 0;
-            BOOL isEndGame = FALSE;
+            BOOL isEndGame = NO;
 
             int opponentValidMoves = [testBoard GetValidMoveCount: nextColor == kSOBlack];
             if (opponentValidMoves == 0)
@@ -433,7 +433,7 @@
                // If that player cannot make a move either, the
                // game is over.
                if (![testBoard HasValidMove : nextColor == kSOBlack])
-                  isEndGame = TRUE;
+                  isEndGame = YES;
             }
 
             // If we reached the end of the look ahead (end game or
