@@ -31,8 +31,6 @@
     int FrontierWeight;
     int MobilityWeight;
     int StabilityWeight;
-
-    int Difficulty;
     int LookAheadDepth;
 	
 	// Skill Level.

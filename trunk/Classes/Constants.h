@@ -6,8 +6,7 @@
 #define MoveCompleted		4 // A move has been completed (including the animation, if active).
 
 // Defines the maximum move rank value (used for ranking an end game).
-#define MAX_INT  (int)((unsigned int)(-1) >> 1)
-#define MAX_RANK (MAX_INT - 64)
+#define MAX_RANK 32703 //(32767-64)
 
 // Define the keys for settings.
 #define SmartOthelloSkillLevelKey        @"SmartOthelloSkillLevelKey"
