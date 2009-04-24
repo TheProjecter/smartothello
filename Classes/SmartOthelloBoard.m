@@ -7,6 +7,8 @@
 //
 
 #import "SmartOthelloBoard.h"
+
+@implementation SmartOthelloBoard
 -(int) BlackCount {
    return BlackCount;
 }

@@ -313,8 +313,8 @@
 }
 
 -(void) SetAILevel {
-   int Difficulty = skillLevel;
-   switch (Difficulty) {
+   int difficulty = skillLevel;
+   switch (difficulty) {
       case kSOAIBeginner:
          ForfeitWeight      =  2;
          FrontierWeight     =  1;
@@ -347,7 +347,7 @@
          break;
    }
 
-   LookAheadDepth = level + 3;
+   LookAheadDepth = difficulty + 3;
 }
 
 -(int) AdjustLookAheadDepth: (SmartOthelloBoard *) newBoard
@@ -412,7 +412,7 @@
 			SmartOthelloBoard *testBoard = [[[SmartOthelloBoard alloc] initWithBoard:newBoard] autorelease];
 
             [testBoard MakeMove: color == kSOBlack
-                             At: testMove.Move.row : testMove.Move.col];
+                             At: testMove.row : testMove.col];
 
             int score = [testBoard WhiteCount] - [testBoard BlackCount];
 
@@ -447,20 +447,20 @@
                {
                   // Negative value for black win.
                   if (score < 0)
-                     testMove.Rank = - MAX_RANK + score;
+                     testMove.rank = - MAX_RANK + score;
 
                   // Positive value for white win.
                   else if (score > 0)
-                     testMove.Rank = MAX_RANK + score;
+                     testMove.rank = MAX_RANK + score;
 
                   // Zero for a draw.
                   else
-                     testMove.Rank = 0;
+                     testMove.rank = 0;
                }
 
                // It's not an end game so calculate the move rank.
                else {
-                  testMove.Rank =
+                  testMove.rank =
                      ForfeitWeight * forfeit +
                      FrontierWeight  * ([testBoard BlackFrontierCount] - [testBoard WhiteFrontierCount]) +
                      MobilityWeight  * color * (validMoves - opponentValidMoves) +
@@ -479,42 +479,42 @@
                                                               : beta];
 
                // Pull up the rank.
-               testMove.Rank = nextMove.Rank;
+               testMove.rank = nextMove.rank;
 
                // Forfeits are cumulative, so if the move did not
                // result in an end game, add any current forfeit
                // value to the rank.
-               if (forfeit != 0 && abs(testMove.Rank) < MAX_RANK)
-                  testMove.Rank += ForfeitWeight * forfeit;
+               if (forfeit != 0 && abs(testMove.rank) < MAX_RANK)
+                  testMove.rank += ForfeitWeight * forfeit;
 
                // Adjust the alpha and beta values, if necessary.
-               if (color == kSOWhite && testMove.Rank > beta)
-                  beta = testMove.Rank;
-               if (color == kSOBlack && testMove.Rank < alpha)
-                  alpha = testMove.Rank;
+               if (color == kSOWhite && testMove.rank > beta)
+                  beta = testMove.rank;
+               if (color == kSOBlack && testMove.rank < alpha)
+                  alpha = testMove.rank;
             }
 
             // Perform a cutoff if the rank is outside tha alpha-beta range.
-            if (color == kSOWhite && testMove.Rank > alpha)
+            if (color == kSOWhite && testMove.rank > alpha)
             {
-               testMove.Rank = alpha;
+               testMove.rank = alpha;
                return testMove;
             }
-            if (color == kSOBlack && testMove.Rank < beta)
+            if (color == kSOBlack && testMove.rank < beta)
             {
-               testMove.Rank = beta;
+               testMove.rank = beta;
                return testMove;
             }
 
             // If this is the first move tested, assume it is the
             // best for now.
-            if (bestMove.Move.row < 0)
+            if (bestMove.row < 0)
                bestMove = testMove;
 
             // Otherwise, compare the test move to the current
             // best move and take the one that is better for this
             // color.
-            else if (color * testMove.Rank > color * bestMove.Rank)
+            else if (color * testMove.rank > color * bestMove.rank)
                bestMove = testMove;
          }
       }
