@@ -39,7 +39,7 @@
 					<object class="IBUIButton" id="829235558">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{197, 403}, {72, 37}}</string>
+						<string key="NSFrame">{{197, 415}, {72, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -55,19 +55,18 @@
 						<string key="IBUIDisabledTitle">Setting</string>
 						<string key="IBUISelectedTitle">Setting</string>
 						<string key="IBUINormalTitle">Setting</string>
-						<object class="NSColor" key="IBUIHighlightedTitleColor" id="785569999">
+						<object class="NSColor" key="IBUIHighlightedTitleColor" id="764825990">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
+							<bytes key="NSRGB">MCAwIDAuNTAxOTYwODEAA</bytes>
 						</object>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
-						</object>
+						<reference key="IBUIDisabledTitleColor" ref="764825990"/>
+						<reference key="IBUISelectedTitleColor" ref="764825990"/>
+						<reference key="IBUINormalTitleColor" ref="764825990"/>
 					</object>
 					<object class="IBUIButton" id="397490090">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 403}, {72, 37}}</string>
+						<string key="NSFrame">{{20, 415}, {72, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -79,16 +78,22 @@
 						<string key="IBUIDisabledTitle">New</string>
 						<string key="IBUISelectedTitle">New</string>
 						<string key="IBUINormalTitle">New</string>
-						<reference key="IBUIHighlightedTitleColor" ref="785569999"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
+						<reference key="IBUIHighlightedTitleColor" ref="764825990"/>
+						<reference key="IBUIDisabledTitleColor" ref="764825990"/>
+						<reference key="IBUISelectedTitleColor" ref="764825990"/>
+						<reference key="IBUINormalTitleColor" ref="764825990"/>
+						<object class="NSColor" key="IBUIHighlightedTitleShadowColor" id="19987750">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
+						<reference key="IBUIDisabledTitleShadowColor" ref="19987750"/>
+						<reference key="IBUISelectedTitleShadowColor" ref="19987750"/>
+						<reference key="IBUINormalTitleShadowColor" ref="19987750"/>
 					</object>
 					<object class="IBUIButton" id="776506996">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{110, 403}, {72, 37}}</string>
+						<string key="NSFrame">{{108, 415}, {72, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -100,16 +105,15 @@
 						<string key="IBUIDisabledTitle">Undo</string>
 						<string key="IBUISelectedTitle">Undo</string>
 						<string key="IBUINormalTitle">Undo</string>
-						<reference key="IBUIHighlightedTitleColor" ref="785569999"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
-						</object>
+						<reference key="IBUIHighlightedTitleColor" ref="764825990"/>
+						<reference key="IBUIDisabledTitleColor" ref="764825990"/>
+						<reference key="IBUISelectedTitleColor" ref="764825990"/>
+						<reference key="IBUINormalTitleColor" ref="764825990"/>
 					</object>
 					<object class="IBUIButton" id="707021007">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{282, 411}, {18, 19}}</string>
+						<string key="NSFrame">{{282, 419}, {18, 19}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -118,7 +122,10 @@
 						<reference key="IBUIFont" ref="267493904"/>
 						<int key="IBUIButtonType">4</int>
 						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
-						<reference key="IBUIHighlightedTitleColor" ref="785569999"/>
+						<object class="NSColor" key="IBUIHighlightedTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAxIDEAA</bytes>
+						</object>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
@@ -127,7 +134,7 @@
 					<object class="IBUIImageView" id="279650649">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{58, 340}, {50, 50}}</string>
+						<string key="NSFrame">{{58, 332}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -141,7 +148,7 @@
 					<object class="IBUIImageView" id="62783683">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{218, 340}, {50, 50}}</string>
+						<string key="NSFrame">{{218, 332}, {50, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -156,11 +163,8 @@
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">3</int>
-					<bytes key="NSWhite">MQA</bytes>
-					<object class="NSColorSpace" key="NSCustomColorSpace">
-						<int key="NSID">2</int>
-					</object>
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC42MDAwMDAwMiAwLjYwMDAwMDAyIDAuNjAwMDAwMDIAA</bytes>
 				</object>
 			</object>
 		</object>
@@ -229,11 +233,11 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="829235558"/>
-							<reference ref="397490090"/>
 							<reference ref="776506996"/>
 							<reference ref="707021007"/>
 							<reference ref="279650649"/>
 							<reference ref="62783683"/>
+							<reference ref="397490090"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>
