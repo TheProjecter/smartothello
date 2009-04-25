@@ -68,6 +68,64 @@
         CGContextDrawPath(ctx, kCGPathFillStroke);
     }
 	
+	// Set black and white count
+	NSString *strBlackCount = [[NSString alloc] initWithFormat:@"%d", [othello getBlackCount]];
+	[labelBlackCount setText:strBlackCount];
+	[strBlackCount release];
+	
+	NSString *strWhiteCount = [[NSString alloc] initWithFormat:@"%d", [othello getWhiteCount]];
+	[labelWhiteCount setText:strWhiteCount];
+	[strWhiteCount release];
+	
+	// Set the game status
+	if([othello gameState] == InComputerMove) {
+		[labelGameStatus setText:@"Computer is thinking ..."];
+		[newButton setEnabled:NO];
+		[undoButton setEnabled:YES];
+		[settingButton setEnabled:NO];
+		[infoButton setEnabled:NO];
+	}
+	else if([othello gameState] == InPlayerMove) {
+		[labelGameStatus setText:@"It's your turn to move."];
+		[newButton setEnabled:YES];
+		[undoButton setEnabled:YES];
+		[settingButton setEnabled:YES];
+		[infoButton setEnabled:YES];
+	}
+	else if([othello gameState] == GameOver) {
+		if([othello getBlackCount] > [othello getWhiteCount])
+			[labelGameStatus setText:@"Game over. Black wins!"];
+		else if([othello getBlackCount] < [othello getWhiteCount])
+			[labelGameStatus setText:@"Game over. White wins!"];
+		else
+			[labelGameStatus setText:@"Game over. Draw!"];
+		[newButton setEnabled:YES];
+		[undoButton setEnabled:NO];
+		[settingButton setEnabled:YES];
+		[infoButton setEnabled:YES];
+	}
+	else {
+		// Reset the button status to YES
+		[newButton setEnabled:YES];
+		[undoButton setEnabled:YES];
+		[settingButton setEnabled:YES];
+		[infoButton setEnabled:YES];
+	}
+	
+	// Set the current player
+	if([othello currentColor] == kSOBlack) {
+		UIImage *black = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"blackhighlight" ofType:@"png"]];
+		UIImage *white = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"white" ofType:@"png"]];
+		[blackDisc setImage:black];
+		[whiteDisc setImage:white];
+	}
+	else {
+		UIImage *black = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"black" ofType:@"png"]];
+		UIImage *white = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"whitehighlight" ofType:@"png"]];
+		[blackDisc setImage:black];
+		[whiteDisc setImage:white];
+	}
+	
 	// Play the sound
 	if (playSound) {
 		AudioServicesPlaySystemSound (soundID);	
@@ -243,6 +301,42 @@
 
 - (void)undoMove {
 	[othello undoMove];
+}
+
+- (void)setLabelBlackCount:(UILabel *)label {
+	labelBlackCount = label;
+}
+
+- (void)setLabelWhiteCount:(UILabel *)label {
+	labelWhiteCount = label;
+}
+
+- (void)setLabelGameStatus:(UILabel *)label {
+	labelGameStatus = label;
+}
+
+- (void)setNewButton:(UIButton *)button {
+	newButton = button;
+}
+
+- (void)setUndoButton:(UIButton *)button {
+	undoButton = button;
+}
+
+- (void)setSettingButton:(UIButton *)button {
+	settingButton = button;
+}
+
+- (void)setInfoButton:(UIButton *)button {
+	infoButton = button;
+}
+
+- (void)setBlackDisc:(UIImageView *)view {
+	blackDisc = view;
+}
+
+- (void)setWhiteDisc:(UIImageView *)view {
+	whiteDisc = view;
 }
 
 - (void)dealloc {
