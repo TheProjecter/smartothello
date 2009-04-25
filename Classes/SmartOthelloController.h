@@ -59,6 +59,7 @@
 @property int lastMoveCol;
 @property int lastMoveColor;
 @property int currentColor;
+@property int gameState;
 
 - (id)initWithView:(UIView *)v;
 - (void)startGame;
@@ -79,6 +80,8 @@
 - (void)setSkillLevel:(int)level;
 - (void)setBlackPlayer:(int)player;
 - (void)setWhitePlayer:(int)player;
+- (int)getBlackCount;
+- (int)getWhiteCount;
 // From Zyan's AI code
 -(void) SetAILevel;
 -(int) AdjustLookAheadDepth: (SmartOthelloBoard *) newBoard;

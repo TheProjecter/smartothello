@@ -18,6 +18,7 @@
 @synthesize lastMoveCol;
 @synthesize lastMoveColor;
 @synthesize currentColor;
+@synthesize gameState;
 
 - (id)init {
     if (self = [super init]) {
@@ -310,6 +311,14 @@
 
 - (void)setWhitePlayer:(int)player {
 	whitePlayer = player;
+}
+
+- (int)getBlackCount {
+	return [board BlackCount];
+}
+
+- (int)getWhiteCount {
+	return [board WhiteCount];
 }
 
 -(void) SetAILevel {

@@ -20,6 +20,15 @@
 @synthesize showPossibleMoves;
 @synthesize playSound;
 @synthesize shakeToRestart;
+@synthesize labelBlackCount;
+@synthesize labelWhiteCount;
+@synthesize labelGameStatus;
+@synthesize newButton;
+@synthesize undoButton;
+@synthesize settingButton;
+@synthesize infoButton;
+@synthesize blackDisc;
+@synthesize whiteDisc;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -40,6 +49,18 @@
 	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
 	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
 	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
+}
+
+- (void)passControlsToView {
+	[(SmartOthelloView *)(self.view) setLabelBlackCount:labelBlackCount];
+	[(SmartOthelloView *)(self.view) setLabelWhiteCount:labelWhiteCount];
+	[(SmartOthelloView *)(self.view) setLabelGameStatus:labelGameStatus];
+	[(SmartOthelloView *)(self.view) setNewButton:newButton];
+	[(SmartOthelloView *)(self.view) setUndoButton:undoButton];
+	[(SmartOthelloView *)(self.view) setSettingButton:settingButton];
+	[(SmartOthelloView *)(self.view) setInfoButton:infoButton];
+	[(SmartOthelloView *)(self.view) setBlackDisc:blackDisc];
+	[(SmartOthelloView *)(self.view) setWhiteDisc:whiteDisc];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -80,6 +101,8 @@
 - (void)viewDidLoad {
 	[self refreshSettings];
 	
+	[self passControlsToView];
+	
 	[(SmartOthelloView *)(self.view) restartGame];
 	UIAccelerometer *accel = [UIAccelerometer sharedAccelerometer];
 	accel.delegate = self;
@@ -103,6 +126,15 @@
 
 
 - (void)dealloc {
+	[labelBlackCount release];
+	[labelWhiteCount release];
+	[labelGameStatus release];
+	[newButton release];
+	[undoButton release];
+	[settingButton release];
+	[infoButton release];
+	[blackDisc release];
+	[whiteDisc release];
     [super dealloc];
 }
 
