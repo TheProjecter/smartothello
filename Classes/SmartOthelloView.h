@@ -31,6 +31,7 @@
 	UIButton *infoButton;
 	UIImageView *blackDisc;
 	UIImageView *whiteDisc;
+	UIActivityIndicatorView *calculatingIndicatorView;
 }
 - (void)renderCellAtRow:(int)row Column:(int)col;
 - (void)initImages;
@@ -50,4 +51,5 @@
 - (void)setInfoButton:(UIButton *)button;
 - (void)setBlackDisc:(UIImageView *)view;
 - (void)setWhiteDisc:(UIImageView *)view;
+- (void)setCalculatingIndicatorView:(UIActivityIndicatorView *)indicatorView;
 @end
