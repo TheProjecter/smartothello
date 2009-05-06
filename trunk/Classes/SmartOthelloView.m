@@ -50,7 +50,7 @@
     }
     	
 	//Draw Board
-    CGContextSetLineWidth(ctx, 1.0);
+    CGContextSetLineWidth(ctx, 0.5);
     CGContextSetFillColor(ctx, black);
 	
     for ( i = 0; i < 8; i++ ) {
@@ -79,18 +79,20 @@
 	
 	// Set the game status
 	if([othello gameState] == InComputerMove) {
-		[labelGameStatus setText:@"Computer is thinking ..."];
+		[labelGameStatus setText:@"iPhone is thinking ..."];
 		[newButton setEnabled:NO];
 		[undoButton setEnabled:YES];
 		[settingButton setEnabled:NO];
 		[infoButton setEnabled:NO];
+		[calculatingIndicatorView startAnimating];
 	}
 	else if([othello gameState] == InPlayerMove) {
-		[labelGameStatus setText:@"It's your turn to move."];
+		[labelGameStatus setText:@"It's your turn to move"];
 		[newButton setEnabled:YES];
 		[undoButton setEnabled:YES];
 		[settingButton setEnabled:YES];
 		[infoButton setEnabled:YES];
+		[calculatingIndicatorView stopAnimating];
 	}
 	else if([othello gameState] == GameOver) {
 		if([othello getBlackCount] > [othello getWhiteCount])
@@ -103,6 +105,7 @@
 		[undoButton setEnabled:NO];
 		[settingButton setEnabled:YES];
 		[infoButton setEnabled:YES];
+		[calculatingIndicatorView stopAnimating];
 	}
 	else {
 		// Reset the button status to YES
@@ -110,6 +113,7 @@
 		[undoButton setEnabled:YES];
 		[settingButton setEnabled:YES];
 		[infoButton setEnabled:YES];
+		[calculatingIndicatorView stopAnimating];
 	}
 	
 	// Set the current player
@@ -337,6 +341,10 @@
 
 - (void)setWhiteDisc:(UIImageView *)view {
 	whiteDisc = view;
+}
+
+- (void)setCalculatingIndicatorView:(UIActivityIndicatorView *)indicatorView {
+	calculatingIndicatorView = indicatorView;
 }
 
 - (void)dealloc {

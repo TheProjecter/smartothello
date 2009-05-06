@@ -26,6 +26,7 @@
 	IBOutlet UIButton *infoButton;
 	IBOutlet UIImageView *blackDisc;
 	IBOutlet UIImageView *whiteDisc;
+	IBOutlet UIActivityIndicatorView *calculatingIndicatorView;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
 @property int skillLevel;
@@ -43,6 +44,7 @@
 @property (nonatomic, retain) UIButton *infoButton;
 @property (nonatomic, retain) UIImageView *blackDisc;
 @property (nonatomic, retain) UIImageView *whiteDisc;
+@property (nonatomic, retain) UIActivityIndicatorView *calculatingIndicatorView;
 
 - (void)refreshSettings;
 - (void)passControlsToView;

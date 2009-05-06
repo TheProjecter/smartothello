@@ -29,6 +29,7 @@
 @synthesize infoButton;
 @synthesize blackDisc;
 @synthesize whiteDisc;
+@synthesize calculatingIndicatorView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -61,6 +62,7 @@
 	[(SmartOthelloView *)(self.view) setInfoButton:infoButton];
 	[(SmartOthelloView *)(self.view) setBlackDisc:blackDisc];
 	[(SmartOthelloView *)(self.view) setWhiteDisc:whiteDisc];
+	[(SmartOthelloView *)(self.view) setCalculatingIndicatorView:calculatingIndicatorView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -135,6 +137,7 @@
 	[infoButton release];
 	[blackDisc release];
 	[whiteDisc release];
+	[calculatingIndicatorView release];
     [super dealloc];
 }
 
