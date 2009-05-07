@@ -36,7 +36,7 @@
     // Drawing code
 	int i;
 	int j;
-	float black[4] = {0, 0, 0, 1};
+	//float black[4] = {0, 0, 0, 1};
     CGRect r = CGRectMake(0.0, 0.0, 320.0, 320.0);
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -48,7 +48,8 @@
             [self renderCellAtRow:i Column:j];
         }
     }
-    	
+
+	/*
 	//Draw Board
     CGContextSetLineWidth(ctx, 0.5);
     CGContextSetFillColor(ctx, black);
@@ -67,6 +68,7 @@
         CGContextClosePath(ctx);
         CGContextDrawPath(ctx, kCGPathFillStroke);
     }
+	*/
 	
 	// Set black and white count
 	NSString *strBlackCount = [[NSString alloc] initWithFormat:@"%d", [othello getBlackCount]];
@@ -175,7 +177,7 @@
     CGDataProviderRelease(provider);
 	
     //White image
-    p = [[NSBundle mainBundle] pathForResource: @"white" ofType: @"png"];
+    p = [[NSBundle mainBundle] pathForResource: @"whitedisc" ofType: @"png"];
     path = CFStringCreateWithCString(NULL, 
 									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
 									 kCFStringEncodingUTF8);
@@ -190,7 +192,7 @@
     CGDataProviderRelease(provider);
 	
     //Black image
-    p = [[NSBundle mainBundle] pathForResource: @"black" ofType: @"png"];
+    p = [[NSBundle mainBundle] pathForResource: @"blackdisc" ofType: @"png"];
     path = CFStringCreateWithCString(NULL, 
 									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
 									 kCFStringEncodingUTF8);
@@ -253,7 +255,7 @@
 - (void)renderCellAtRow:(int)row Column:(int)col {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
-    CGRect rect = CGRectMake(row*40.0, col*40.0, 40.0, 40.0);
+    CGRect rect = CGRectMake(row*40.0, col*40.0, 39.0, 39.0);
 	
     if ([othello getsquareContentsAtRow:row Column:col] == kSOBlack) {
 		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {

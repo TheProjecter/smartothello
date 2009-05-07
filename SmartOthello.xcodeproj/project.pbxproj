@@ -38,6 +38,8 @@
 		5CA95C8A0F7A682F00BCE55D /* hint.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C870F7A682F00BCE55D /* hint.png */; };
 		5CA95C8B0F7A682F00BCE55D /* whitelast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C880F7A682F00BCE55D /* whitelast.png */; };
 		5CC83FF30F8A3D29008BE2C4 /* MoveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */; };
+		5CC8CCCC0FB3051A001D5710 /* blackdisc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC8CCCA0FB3051A001D5710 /* blackdisc.png */; };
+		5CC8CCCD0FB3051A001D5710 /* whitedisc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC8CCCB0FB3051A001D5710 /* whitedisc.png */; };
 		5CF3D5D40F77D626009CE158 /* SmartOthelloController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3D5D20F77D626009CE158 /* SmartOthelloController.m */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		5CA95C880F7A682F00BCE55D /* whitelast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelast.png; sourceTree = "<group>"; };
 		5CC83FF10F8A3D29008BE2C4 /* MoveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveRecord.h; sourceTree = "<group>"; };
 		5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveRecord.m; sourceTree = "<group>"; };
+		5CC8CCCA0FB3051A001D5710 /* blackdisc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackdisc.png; sourceTree = "<group>"; };
+		5CC8CCCB0FB3051A001D5710 /* whitedisc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitedisc.png; sourceTree = "<group>"; };
 		5CF3D5D20F77D626009CE158 /* SmartOthelloController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartOthelloController.m; sourceTree = "<group>"; };
 		5CF3D5D30F77D626009CE158 /* SmartOthelloController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartOthelloController.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5CC8CCCA0FB3051A001D5710 /* blackdisc.png */,
+				5CC8CCCB0FB3051A001D5710 /* whitedisc.png */,
 				5C6B780A0FB1CE1800CE8582 /* new.png */,
 				5C6B78060FB1CCFB00CE8582 /* undo.png */,
 				5C6B78020FB1CC1600CE8582 /* setting.png */,
@@ -257,6 +263,8 @@
 				5C6B78030FB1CC1600CE8582 /* setting.png in Resources */,
 				5C6B78070FB1CCFB00CE8582 /* undo.png in Resources */,
 				5C6B780B0FB1CE1800CE8582 /* new.png in Resources */,
+				5CC8CCCC0FB3051A001D5710 /* blackdisc.png in Resources */,
+				5CC8CCCD0FB3051A001D5710 /* whitedisc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
