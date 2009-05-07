@@ -189,9 +189,9 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Players</string>
-						<object class="NSColor" key="IBUITextColor" id="767216121">
+						<object class="NSColor" key="IBUITextColor" id="89617073">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
+							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -200,13 +200,13 @@
 					<object class="IBUILabel" id="708246794">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{27, 198}, {34, 21}}</string>
+						<string key="NSFrame">{{27, 201}, {34, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Level</string>
-						<reference key="IBUITextColor" ref="767216121"/>
+						<reference key="IBUITextColor" ref="89617073"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">6.000000e+00</float>
@@ -220,7 +220,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Show Possible Moves</string>
-						<reference key="IBUITextColor" ref="767216121"/>
+						<reference key="IBUITextColor" ref="89617073"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">6.000000e+00</float>
@@ -234,7 +234,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Shake to Restart</string>
-						<reference key="IBUITextColor" ref="767216121"/>
+						<reference key="IBUITextColor" ref="89617073"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">6.000000e+00</float>
@@ -248,7 +248,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Sound</string>
-						<reference key="IBUITextColor" ref="767216121"/>
+						<reference key="IBUITextColor" ref="89617073"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">6.000000e+00</float>
@@ -293,8 +293,8 @@
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC45MDE5NjA3OSAwLjkwMTk2MDc5IDAuOTAxOTYwNzkAA</bytes>
+					<int key="NSColorSpace">2</int>
+					<bytes key="NSRGB">MCAwLjIwMzkyMTU5IDAuMTQxMTc2NDgAA</bytes>
 				</object>
 			</object>
 		</object>
