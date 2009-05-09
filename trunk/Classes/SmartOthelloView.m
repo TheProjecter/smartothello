@@ -83,7 +83,13 @@
 	if([othello gameState] == InComputerMove) {
 		[labelGameStatus setText:@"iPhone is thinking ..."];
 		[newButton setEnabled:NO];
-		[undoButton setEnabled:YES];
+		// Can't Undo in the initial state
+		if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
+			[undoButton setEnabled:NO];
+		}
+		else {
+			[undoButton setEnabled:YES];
+		}
 		[settingButton setEnabled:NO];
 		[infoButton setEnabled:NO];
 		[calculatingIndicatorView startAnimating];
@@ -91,7 +97,13 @@
 	else if([othello gameState] == InPlayerMove) {
 		[labelGameStatus setText:@"It's your turn to move"];
 		[newButton setEnabled:YES];
-		[undoButton setEnabled:YES];
+		// Can't Undo in the initial state
+		if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
+			[undoButton setEnabled:NO];
+		}
+		else {
+			[undoButton setEnabled:YES];
+		}
 		[settingButton setEnabled:YES];
 		[infoButton setEnabled:YES];
 		[calculatingIndicatorView stopAnimating];
