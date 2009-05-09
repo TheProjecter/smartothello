@@ -60,6 +60,7 @@
 @property int lastMoveColor;
 @property int currentColor;
 @property int gameState;
+@property BOOL isComputerPlaySuspended;
 
 - (id)initWithView:(UIView *)v;
 - (void)startGame;

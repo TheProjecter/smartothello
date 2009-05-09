@@ -81,7 +81,14 @@
 	
 	// Set the game status
 	if([othello gameState] == InComputerMove) {
-		[labelGameStatus setText:@"iPhone is thinking ..."];
+		if([othello isComputerPlaySuspended]) {
+			[labelGameStatus setText:@"Undo last move"];
+			[calculatingIndicatorView stopAnimating];
+		}
+		else {
+			[labelGameStatus setText:@"iPhone is thinking ..."];
+			[calculatingIndicatorView startAnimating];
+		}
 		[newButton setEnabled:NO];
 		// Can't Undo in the initial state
 		if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
@@ -92,7 +99,6 @@
 		}
 		[settingButton setEnabled:NO];
 		[infoButton setEnabled:NO];
-		[calculatingIndicatorView startAnimating];
 	}
 	else if([othello gameState] == InPlayerMove) {
 		[labelGameStatus setText:@"It's your turn to move"];
@@ -161,7 +167,6 @@
     int y = (int)location.y / cellHeight;
 	if(location.x < 320.0 && location.y < 320.0) {
 		[othello boardClickedAtRow:x Column:y];
-		[self setNeedsDisplay];
 	}
 }
 
