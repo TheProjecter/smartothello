@@ -82,23 +82,28 @@
 	// Set the game status
 	if([othello gameState] == InComputerMove) {
 		if([othello isComputerPlaySuspended]) {
-			[labelGameStatus setText:@"Undo last move"];
+			[labelGameStatus setText:@"Undo the last move"];
 			[calculatingIndicatorView stopAnimating];
+			[newButton setEnabled:YES];
+			[settingButton setEnabled:YES];
+			[infoButton setEnabled:YES];
+			// Can't Undo in the initial state
+			if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
+				[undoButton setEnabled:NO];
+				[labelGameStatus setText:@"Restart the game now"];
+			}
+			else {
+				[undoButton setEnabled:YES];
+			}
 		}
 		else {
 			[labelGameStatus setText:@"iPhone is thinking ..."];
 			[calculatingIndicatorView startAnimating];
-		}
-		[newButton setEnabled:NO];
-		// Can't Undo in the initial state
-		if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
+			[newButton setEnabled:NO];
+			[settingButton setEnabled:NO];
+			[infoButton setEnabled:NO];
 			[undoButton setEnabled:NO];
 		}
-		else {
-			[undoButton setEnabled:YES];
-		}
-		[settingButton setEnabled:NO];
-		[infoButton setEnabled:NO];
 	}
 	else if([othello gameState] == InPlayerMove) {
 		[labelGameStatus setText:@"It's your turn to move"];
