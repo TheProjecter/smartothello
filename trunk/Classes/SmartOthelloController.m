@@ -19,6 +19,7 @@
 @synthesize lastMoveColor;
 @synthesize currentColor;
 @synthesize gameState;
+@synthesize isComputerPlaySuspended;
 
 - (id)init {
     if (self = [super init]) {
