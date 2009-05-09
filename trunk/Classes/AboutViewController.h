@@ -12,7 +12,9 @@
 
 @interface AboutViewController : UIViewController {
 	SmartOthelloViewController *delegate;
+	IBOutlet UIWebView *webView;
 }
 @property (nonatomic, retain) SmartOthelloViewController *delegate;
 - (void)aboutDone;
+- (void)loadWebView;
 @end
