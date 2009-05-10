@@ -103,6 +103,12 @@
 - (void)viewDidLoad {
 	[self refreshSettings];
 	
+	// To set the UILabel display font
+	UIFont *displayFont = [UIFont fontWithName:@"MarkerFelt-Thin" size:16];
+	labelBlackCount.font = displayFont;
+	labelWhiteCount.font = displayFont;
+	labelGameStatus.font = displayFont;
+	
 	[self passControlsToView];
 	
 	[(SmartOthelloView *)(self.view) restartGame];
