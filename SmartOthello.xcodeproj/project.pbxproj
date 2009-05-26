@@ -38,6 +38,7 @@
 		5CA95C890F7A682F00BCE55D /* blacklast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C860F7A682F00BCE55D /* blacklast.png */; };
 		5CA95C8A0F7A682F00BCE55D /* hint.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C870F7A682F00BCE55D /* hint.png */; };
 		5CA95C8B0F7A682F00BCE55D /* whitelast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CA95C880F7A682F00BCE55D /* whitelast.png */; };
+		5CC059C00FCB72290075384E /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5CC059BF0FCB72290075384E /* Entitlements.plist */; };
 		5CC83FF30F8A3D29008BE2C4 /* MoveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */; };
 		5CC8CCCC0FB3051A001D5710 /* blackdisc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC8CCCA0FB3051A001D5710 /* blackdisc.png */; };
 		5CC8CCCD0FB3051A001D5710 /* whitedisc.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CC8CCCB0FB3051A001D5710 /* whitedisc.png */; };
@@ -87,6 +88,7 @@
 		5CA95C860F7A682F00BCE55D /* blacklast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacklast.png; sourceTree = "<group>"; };
 		5CA95C870F7A682F00BCE55D /* hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hint.png; sourceTree = "<group>"; };
 		5CA95C880F7A682F00BCE55D /* whitelast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whitelast.png; sourceTree = "<group>"; };
+		5CC059BF0FCB72290075384E /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		5CC83FF10F8A3D29008BE2C4 /* MoveRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveRecord.h; sourceTree = "<group>"; };
 		5CC83FF20F8A3D29008BE2C4 /* MoveRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveRecord.m; sourceTree = "<group>"; };
 		5CC8CCCA0FB3051A001D5710 /* blackdisc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackdisc.png; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				5CC059BF0FCB72290075384E /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -269,6 +272,7 @@
 				5CC8CCCC0FB3051A001D5710 /* blackdisc.png in Resources */,
 				5CC8CCCD0FB3051A001D5710 /* whitedisc.png in Resources */,
 				5C97AA040FB577D800F2834A /* abouticon.png in Resources */,
+				5CC059C00FCB72290075384E /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,16 +326,45 @@
 			};
 			name = Release;
 		};
+		5CC059990FCB6EAC0075384E /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jucao Liang (24FJ4483SP)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF288D33-165E-4D58-BF0F-9E41E602EA19";
+				SDKROOT = iphoneos2.2.1;
+			};
+			name = Distribution;
+		};
+		5CC0599A0FCB6EAC0075384E /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jucao Liang";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SmartOthello_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_NAME = SmartReversi;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0591B1F9-0ACB-431E-9D16-ABB0FBDD8DC6";
+			};
+			name = Distribution;
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jucao Liang (24FJ4483SP)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF288D33-165E-4D58-BF0F-9E41E602EA19";
 				SDKROOT = iphoneos2.2.1;
 			};
 			name = Debug;
@@ -340,11 +373,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jucao Liang (24FJ4483SP)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF288D33-165E-4D58-BF0F-9E41E602EA19";
 				SDKROOT = iphoneos2.2.1;
 			};
 			name = Release;
@@ -357,6 +391,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				5CC0599A0FCB6EAC0075384E /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -366,6 +401,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				5CC059990FCB6EAC0075384E /* Distribution */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -264,11 +264,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>080E96DDFE201D6D7F000001</string>
-								<string>29B97315FDCFA39411CA2CEA</string>
-								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -276,13 +271,12 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>47</integer>
-									<integer>26</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 533}, {236, 589}}</string>
+							<string>{{0, 0}, {236, 589}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -317,7 +311,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>SmartOthelloViewController.m</string>
+								<string>Entitlements.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +319,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SmartOthelloViewController.m</string>
+										<string>Entitlements.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5CDA5EEA0FB871DB007D0E64</string>
+										<string>5CC059C80FCB72CD0075384E</string>
 										<key>history</key>
 										<array>
 											<string>5C7F3CF70F6FF7DE009606D6</string>
@@ -361,17 +355,18 @@
 											<string>5C6B78140FB1D05F00CE8582</string>
 											<string>5C6B78150FB1D05F00CE8582</string>
 											<string>5CD99DD30FB1E681003E9F30</string>
-											<string>5CD99DD40FB1E681003E9F30</string>
-											<string>5C64AE440FB31CB600CD0EDA</string>
 											<string>5C70CB590FB537F00074F815</string>
 											<string>5C0DA90C0FB5429D00A2B572</string>
-											<string>5C0DA90D0FB5429D00A2B572</string>
 											<string>5C97AA420FB57D2E00F2834A</string>
 											<string>5C97AA430FB57D2E00F2834A</string>
 											<string>5C1197A90FB5A1F1009B474A</string>
 											<string>5C718B4A0FB67BDE0010E9C2</string>
-											<string>5C718B4B0FB67BDE0010E9C2</string>
-											<string>5CDA5EE90FB871DB007D0E64</string>
+											<string>5CF7268B0FC7E97A00C146AB</string>
+											<string>5CF7268C0FC7E97A00C146AB</string>
+											<string>5C73F5430FC92684006CD1EB</string>
+											<string>5CA2C1430FCAF56E00CC4FE2</string>
+											<string>5CC059C10FCB72450075384E</string>
+											<string>5CC059C70FCB72CD0075384E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -414,7 +409,7 @@
 											<string>5C6B78180FB1D05F00CE8582</string>
 											<string>5C6B78190FB1D05F00CE8582</string>
 											<string>5C9C89580FB1D9AB006AE91B</string>
-											<string>5C64AE450FB31CB600CD0EDA</string>
+											<string>5CC059C30FCB72450075384E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -472,9 +467,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5CDA5ED30FB87108007D0E64</string>
+				<string>5CC0598E0FCB6E8C0075384E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5CDA5ED40FB87108007D0E64</string>
+				<string>5CC0598F0FCB6E8C0075384E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -609,8 +604,8 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>5C8462F70F6E98A400B3254F</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Volumes/ASTS_DB_1/JACKY/Project/GoogleCode/SmartOthello/trunk/SmartOthello.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -652,6 +647,8 @@
 							<string>354pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -691,7 +688,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5C8462F70F6E98A400B3254F</string>
-				<string>5CDA5ED50FB87108007D0E64</string>
+				<string>5CC059A30FCB704F0075384E</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -811,13 +808,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>5CDA5ED60FB87108007D0E64</string>
+				<string>5CC059A40FCB704F0075384E</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>5CDA5ED70FB87108007D0E64</string>
-				<string>5CDA5ED80FB87108007D0E64</string>
-				<string>5CDA5ED90FB87108007D0E64</string>
-				<string>5CDA5EDA0FB87108007D0E64</string>
-				<string>5CDA5EDB0FB87108007D0E64</string>
+				<string>5CC059A50FCB704F0075384E</string>
+				<string>5CC059A60FCB704F0075384E</string>
+				<string>5CC059A70FCB704F0075384E</string>
+				<string>5CC059A80FCB704F0075384E</string>
+				<string>5CC059A90FCB704F0075384E</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -971,7 +968,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>5CDA5EDC0FB87108007D0E64</string>
+				<string>5CC059AA0FCB704F0075384E</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
