@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		5C0EA6BF0FD57BC800277597 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0EA6BE0FD57BC800277597 /* Default.png */; };
 		5C6B78030FB1CC1600CE8582 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B78020FB1CC1600CE8582 /* setting.png */; };
 		5C6B78070FB1CCFB00CE8582 /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B78060FB1CCFB00CE8582 /* undo.png */; };
 		5C6B780B0FB1CE1800CE8582 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B780A0FB1CE1800CE8582 /* new.png */; };
@@ -55,6 +56,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* SmartOthello_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartOthello_Prefix.pch; sourceTree = "<group>"; };
+		5C0EA6BE0FD57BC800277597 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		5C6B78020FB1CC1600CE8582 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		5C6B78060FB1CCFB00CE8582 /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = undo.png; sourceTree = "<group>"; };
 		5C6B780A0FB1CE1800CE8582 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				5C7F3BCA0F6FEFA5009606D6 /* AboutView.xib */,
 				5C8462E40F6E954D00B3254F /* SettingView.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
+				5C0EA6BE0FD57BC800277597 /* Default.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				5CC8CCCD0FB3051A001D5710 /* whitedisc.png in Resources */,
 				5C97AA040FB577D800F2834A /* abouticon.png in Resources */,
 				5CC059C00FCB72290075384E /* Entitlements.plist in Resources */,
+				5C0EA6BF0FD57BC800277597 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,12 +334,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jucao Liang (24FJ4483SP)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jucao Liang";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BF288D33-165E-4D58-BF0F-9E41E602EA19";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0591B1F9-0ACB-431E-9D16-ABB0FBDD8DC6";
 				SDKROOT = iphoneos2.2.1;
 			};
 			name = Distribution;
