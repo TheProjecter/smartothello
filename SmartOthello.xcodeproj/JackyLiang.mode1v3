@@ -228,6 +228,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -264,6 +266,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>080E96DDFE201D6D7F000001</string>
+								<string>29B97317FDCFA39411CA2CEA</string>
+								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -271,12 +276,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
+									<integer>38</integer>
+									<integer>25</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {236, 589}}</string>
+							<string>{{0, 424}, {236, 589}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -311,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Entitlements.plist</string>
+								<string>SmartOthelloAppDelegate.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -319,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Entitlements.plist</string>
+										<string>SmartOthelloAppDelegate.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>5CC059C80FCB72CD0075384E</string>
+										<string>5C0EA6C20FD57BE400277597</string>
 										<key>history</key>
 										<array>
 											<string>5C7F3CF70F6FF7DE009606D6</string>
@@ -333,7 +339,6 @@
 											<string>5C7284350F76300B00F81B34</string>
 											<string>5C8A63550F77CD8D00317E40</string>
 											<string>5CF3D6D50F77E633009CE158</string>
-											<string>5C2536A30F8A0763003F4227</string>
 											<string>5C2536BD0F8A1393003F4227</string>
 											<string>5C50A9740F8A5A9800A1C5B2</string>
 											<string>5C7C994B0F9F62F800F2D74F</string>
@@ -345,7 +350,6 @@
 											<string>5CD49FE20FA2058F00078BC0</string>
 											<string>5C839B680FA2765500B60E95</string>
 											<string>5C97D8920FA27A8000D724D1</string>
-											<string>5C97D8BA0FA282AE00D724D1</string>
 											<string>5C6E0ACC0FA298330015F7CC</string>
 											<string>5C6E0ACD0FA298330015F7CC</string>
 											<string>5C6E0ACF0FA298330015F7CC</string>
@@ -361,12 +365,13 @@
 											<string>5C97AA430FB57D2E00F2834A</string>
 											<string>5C1197A90FB5A1F1009B474A</string>
 											<string>5C718B4A0FB67BDE0010E9C2</string>
-											<string>5CF7268B0FC7E97A00C146AB</string>
-											<string>5CF7268C0FC7E97A00C146AB</string>
-											<string>5C73F5430FC92684006CD1EB</string>
-											<string>5CA2C1430FCAF56E00CC4FE2</string>
 											<string>5CC059C10FCB72450075384E</string>
-											<string>5CC059C70FCB72CD0075384E</string>
+											<string>5CE4C33C0FD1523A00B994B1</string>
+											<string>5CE4C33D0FD1523A00B994B1</string>
+											<string>5CE4C33E0FD1523A00B994B1</string>
+											<string>5C7CA4A30FD36D9B00127590</string>
+											<string>5C7CA4A40FD36D9B00127590</string>
+											<string>5C0EA6900FD571F900277597</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -467,9 +472,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5CC0598E0FCB6E8C0075384E</string>
+				<string>5C0EA66A0FD56EF000277597</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5CC0598F0FCB6E8C0075384E</string>
+				<string>5C0EA66B0FD56EF000277597</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -603,9 +608,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>5C0EA6C30FD57BE400277597</string>
+		<string>5C0EA67E0FD5705900277597</string>
 		<string>1C78EAAD065D492600B07095</string>
-		<string>5C8462F70F6E98A400B3254F</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>5C8462F70F6E98A400B3254F</string>
 		<string>/Volumes/ASTS_DB_1/JACKY/Project/GoogleCode/SmartOthello/trunk/SmartOthello.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -688,7 +695,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>5C8462F70F6E98A400B3254F</string>
-				<string>5CC059A30FCB704F0075384E</string>
+				<string>5C0EA66C0FD56EF000277597</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -808,13 +815,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>5CC059A40FCB704F0075384E</string>
+				<string>5C0EA66F0FD56F2D00277597</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>5CC059A50FCB704F0075384E</string>
-				<string>5CC059A60FCB704F0075384E</string>
-				<string>5CC059A70FCB704F0075384E</string>
-				<string>5CC059A80FCB704F0075384E</string>
-				<string>5CC059A90FCB704F0075384E</string>
+				<string>5C0EA6700FD56F2D00277597</string>
+				<string>5C0EA6710FD56F2D00277597</string>
+				<string>5C0EA6720FD56F2D00277597</string>
+				<string>5C0EA6730FD56F2D00277597</string>
+				<string>5C0EA6740FD56F2D00277597</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -968,7 +975,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>5CC059AA0FCB704F0075384E</string>
+				<string>5C0EA6750FD56F2D00277597</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
