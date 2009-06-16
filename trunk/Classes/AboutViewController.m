@@ -11,7 +11,6 @@
 
 @implementation AboutViewController
 
-@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -83,6 +82,7 @@
 
 
 - (void)dealloc {
+	[webView release];
     [super dealloc];
 }
 
