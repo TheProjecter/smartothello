@@ -166,9 +166,9 @@
 - (IBAction)infoButtonClicked:(id)sender {
 	AboutViewController *aboutViewController = [[AboutViewController alloc] initWithNibName:@"AboutView" bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:aboutViewController];
-	aboutViewController.delegate = self;
 	[self presentModalViewController:navigationController animated:YES];
     [aboutViewController release];
+	[navigationController release];
 }
 
 - (IBAction)newButtonClicked:(id)sender {
