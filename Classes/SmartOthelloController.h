@@ -75,6 +75,7 @@
 - (void)calculateComputerMove:(NSTimer *)sender;
 - (void)restoreGameAtStep:(int)step;
 - (void)undoMove;
+- (void)redoMove;
 - (void)boardClickedAtRow:(int)row Column:(int)col;
 - (enum SOBoardCellStatus)getsquareContentsAtRow:(int)row Column:(int)col;
 - (BOOL)isValidMoveForColor:(int)color Row:(int)row Column:(int)col;

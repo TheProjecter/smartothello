@@ -10,7 +10,7 @@
 
 
 @implementation SmartOthelloView
-
+@synthesize gestureStartPoint;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -163,16 +163,34 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
-	CGPoint location = [touch locationInView:self];// <label id="code.DrawView.location"/>
+	gestureStartPoint = [touch locationInView:self];// <label id="code.DrawView.location"/>
 	CGRect rect = CGRectMake(0.0, 0.0, 320.0, 320.0);;
 	int cellWidth = (int)rect.size.width/SO_BOARD_MAX_X;
     int cellHeight = (int)rect.size.height/SO_BOARD_MAX_Y;
     
-    int x = (int)location.x / cellWidth;
-    int y = (int)location.y / cellHeight;
-	if(location.x < 320.0 && location.y < 320.0) {
+    int x = (int)gestureStartPoint.x / cellWidth;
+    int y = (int)gestureStartPoint.y / cellHeight;
+	if(gestureStartPoint.x < 320.0 && gestureStartPoint.y < 320.0) {
 		[othello boardClickedAtRow:x Column:y];
 	}
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint currentPosition = [touch locationInView:self];
+    
+    CGFloat deltaX = fabsf(gestureStartPoint.x - currentPosition.x);
+	CGFloat deltaY = fabsf(gestureStartPoint.y - currentPosition.y);
+    
+    if (deltaX >= kMinimumGestureLength && deltaY <= kMaximumVariance) {
+		if (gestureStartPoint.x > currentPosition.x) {
+			[self undoMove];
+		}
+		else {
+			[self redoMove];
+		}
+    }
 }
 
 - (void) initImages {
@@ -329,6 +347,10 @@
 
 - (void)undoMove {
 	[othello undoMove];
+}
+
+- (void)redoMove {
+	[othello redoMove];
 }
 
 - (void)setLabelBlackCount:(UILabel *)label {
