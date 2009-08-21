@@ -282,6 +282,18 @@
 		[self startTurn];
 }
 
+- (void)redoMove {
+	// Can't undo in the initial state.
+	if ([moveHistory count] <= moveNumber)
+		return;
+	
+	// Redo either the next move or all moves.
+	[self restoreGameAtStep:moveNumber];
+	
+	// Start play at that move.
+	[self startTurn];
+}
+
 - (void)boardClickedAtRow:(int)row Column:(int)col {	
 	// Check the game state to ensure it's the user's turn.
 	if (gameState != InPlayerMove)

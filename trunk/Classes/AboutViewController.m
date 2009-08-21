@@ -60,7 +60,7 @@
 }
 
 -(void) loadWebView {
-	NSString *version  = @"1.0";
+	NSString *version  = @"1.1";
 	[webView loadHTMLString:[NSString stringWithFormat:@"<font face=\"Helvetica\"> <p style=\"color:rgb(51,51,51);padding-top:8px;\"><br><br><br><br><br><br><br><br><br><br><b style=\"font-size:18px;\">Smart Reversi</b><br>Version %@<br><br>"
 							 "A classic Reversi game for iPhone/iPod Touch.<br><br>"
 							 "Smart Reversi was created by Jucao Liang and developed by Zyan Wu and Jucao Liang.<br><br>"

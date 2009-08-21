@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import "SmartOthelloController.h"
-
+#define kMinimumGestureLength       25
+#define kMaximumVariance            5
 
 @interface SmartOthelloView : UIView {
 	CGImageRef backImage;
@@ -32,7 +33,10 @@
 	UIImageView *blackDisc;
 	UIImageView *whiteDisc;
 	UIActivityIndicatorView *calculatingIndicatorView;
+	CGPoint gestureStartPoint;
 }
+@property CGPoint gestureStartPoint;
+
 - (void)renderCellAtRow:(int)row Column:(int)col;
 - (void)initImages;
 - (void)restartGame;
@@ -42,6 +46,7 @@
 - (void)setShowPossibleMoves:(BOOL)show;
 - (void)setPlaySound:(BOOL)sound;
 - (void)undoMove;
+- (void)redoMove;
 - (void)setLabelBlackCount:(UILabel *)label;
 - (void)setLabelWhiteCount:(UILabel *)label;
 - (void)setLabelGameStatus:(UILabel *)label;

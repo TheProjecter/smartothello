@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="7.03">
 	<data>
 		<int key="IBDocument.SystemTarget">528</int>
-		<string key="IBDocument.SystemVersion">9G55</string>
+		<string key="IBDocument.SystemVersion">9L30</string>
 		<string key="IBDocument.InterfaceBuilderVersion">677</string>
-		<string key="IBDocument.AppKitVersion">949.43</string>
+		<string key="IBDocument.AppKitVersion">949.54</string>
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -51,10 +51,6 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
-						<string key="IBUIHighlightedTitle"/>
-						<string key="IBUIDisabledTitle"/>
-						<string key="IBUISelectedTitle"/>
-						<string key="IBUINormalTitle"/>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="549567384">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwLjI1MDk4MDQxIDAuNTAxOTYwODEAA</bytes>
@@ -62,6 +58,10 @@
 						<reference key="IBUIDisabledTitleColor" ref="549567384"/>
 						<reference key="IBUISelectedTitleColor" ref="549567384"/>
 						<reference key="IBUINormalTitleColor" ref="549567384"/>
+						<object class="NSColor" key="IBUINormalTitleShadowColor" id="278063837">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MAA</bytes>
+						</object>
 						<object class="NSCustomResource" key="IBUIHighlightedImage" id="819217630">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">setting.png</string>
@@ -81,18 +81,11 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="267493904"/>
 						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
-						<string key="IBUIHighlightedTitle"/>
-						<string key="IBUIDisabledTitle"/>
-						<string key="IBUISelectedTitle"/>
-						<string key="IBUINormalTitle"/>
 						<reference key="IBUIHighlightedTitleColor" ref="549567384"/>
 						<reference key="IBUIDisabledTitleColor" ref="549567384"/>
 						<reference key="IBUISelectedTitleColor" ref="549567384"/>
 						<reference key="IBUINormalTitleColor" ref="549567384"/>
-						<object class="NSColor" key="IBUIHighlightedTitleShadowColor" id="278063837">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-						</object>
+						<reference key="IBUIHighlightedTitleShadowColor" ref="278063837"/>
 						<reference key="IBUIDisabledTitleShadowColor" ref="278063837"/>
 						<reference key="IBUISelectedTitleShadowColor" ref="278063837"/>
 						<reference key="IBUINormalTitleShadowColor" ref="278063837"/>
@@ -115,14 +108,11 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="267493904"/>
 						<bool key="IBUIShowsTouchWhenHighlighted">YES</bool>
-						<string key="IBUIHighlightedTitle"/>
-						<string key="IBUIDisabledTitle"/>
-						<string key="IBUISelectedTitle"/>
-						<string key="IBUINormalTitle"/>
 						<reference key="IBUIHighlightedTitleColor" ref="549567384"/>
 						<reference key="IBUIDisabledTitleColor" ref="549567384"/>
 						<reference key="IBUISelectedTitleColor" ref="549567384"/>
 						<reference key="IBUINormalTitleColor" ref="549567384"/>
+						<reference key="IBUINormalTitleShadowColor" ref="278063837"/>
 						<object class="NSCustomResource" key="IBUIHighlightedImage" id="297109767">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">undo.png</string>
@@ -151,6 +141,7 @@
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MyAwLjMwOTgwMzkzIDAuNTIxNTY4NjYAA</bytes>
 						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="278063837"/>
 					</object>
 					<object class="IBUIImageView" id="279650649">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -209,7 +200,7 @@
 					<object class="IBUILabel" id="579333425">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{82, 380}, {145, 22}}</string>
+						<string key="NSFrame">{{82, 380}, {150, 22}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -593,5 +584,6 @@
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.LastKnownRelativeProjectPath">SmartOthello.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<string key="IBCocoaTouchPluginVersion">3.0</string>
 	</data>
 </archive>
