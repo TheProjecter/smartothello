@@ -20,6 +20,7 @@
 @synthesize showPossibleMoves;
 @synthesize playSound;
 @synthesize shakeToRestart;
+@synthesize multitouchGestures;
 @synthesize labelBlackCount;
 @synthesize labelWhiteCount;
 @synthesize labelGameStatus;
@@ -45,11 +46,13 @@
 	showPossibleMoves = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShowPossibleMovesKey];
 	playSound = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloPlaySoundKey];
 	shakeToRestart = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloShakeToRestartKey];
+	multitouchGestures = [[NSUserDefaults standardUserDefaults] boolForKey:SmartOthelloMultitouchGesturesKey];
 	[(SmartOthelloView *)(self.view) setSkillLevel:skillLevel];
 	[(SmartOthelloView *)(self.view) setBlackPlayer:blackPlayer];
 	[(SmartOthelloView *)(self.view) setWhitePlayer:whitePlayer];
 	[(SmartOthelloView *)(self.view) setShowPossibleMoves:showPossibleMoves];
 	[(SmartOthelloView *)(self.view) setPlaySound:playSound];
+	[(SmartOthelloView *)(self.view) setMultitouchGestures:multitouchGestures];
 }
 
 - (void)passControlsToView {

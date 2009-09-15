@@ -82,7 +82,7 @@
 	// Set the game status
 	if([othello gameState] == InComputerMove) {
 		if([othello isComputerPlaySuspended]) {
-			[labelGameStatus setText:@"Undo the last move"];
+			[labelGameStatus setText:@"Undo/redo last move"];
 			[calculatingIndicatorView stopAnimating];
 			[newButton setEnabled:YES];
 			[settingButton setEnabled:YES];
@@ -106,7 +106,12 @@
 		}
 	}
 	else if([othello gameState] == InPlayerMove) {
-		[labelGameStatus setText:@"It's your turn to move"];
+		if([othello currentColor] == kSOBlack) {
+			[labelGameStatus setText:@"Black's turn to move"];
+		}
+		else {
+			[labelGameStatus setText:@"White's turn to move"];
+		}
 		[newButton setEnabled:YES];
 		// Can't Undo in the initial state
 		if([othello getBlackCount] == 2 && [othello getWhiteCount] == 2) {
@@ -176,7 +181,10 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    
+	// If you don't want the multitouch gestures, return directly
+    if (multitouchGestures == NO)
+		return;
+	
     UITouch *touch = [touches anyObject];
     CGPoint currentPosition = [touch locationInView:self];
     
@@ -290,12 +298,27 @@
     hintImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
     
     CGDataProviderRelease(provider);	
+	
+	//Hint white image
+    p = [[NSBundle mainBundle] pathForResource: @"hintwhite" ofType: @"png"];
+    path = CFStringCreateWithCString(NULL, 
+									 [p cStringUsingEncoding: NSASCIIStringEncoding], 
+									 kCFStringEncodingUTF8);
+	
+    url = CFURLCreateWithFileSystemPath(NULL, path, kCFURLPOSIXPathStyle, 0);
+    provider = CGDataProviderCreateWithURL(url);
+	
+    CFRelease(path);
+    CFRelease(url);
+    hintWhiteImage = CGImageCreateWithPNGDataProvider(provider, NULL, true, kCGRenderingIntentDefault);
+    
+    CGDataProviderRelease(provider);
 }
 
 - (void)renderCellAtRow:(int)row Column:(int)col {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
-    CGRect rect = CGRectMake(row*40.0, col*40.0, 39.0, 39.0);
+    CGRect rect = CGRectMake(row*40.0+3.0, col*40.0+3.0, 34.0, 34.0);
 	
     if ([othello getsquareContentsAtRow:row Column:col] == kSOBlack) {
 		if([othello lastMoveRow] == row && [othello lastMoveCol] == col) {
@@ -314,8 +337,13 @@
 		}
     }
 	else {
-		if([othello isValidMoveForColor:([othello currentColor]) Row:row Column:col] && showPossibleMoves) {
-			CGContextDrawImage(ctx, rect, hintImage);
+		if([othello isValidMoveForColor:([othello currentColor]) Row:row Column:col] && showPossibleMoves && ([othello gameState] == InPlayerMove)) {
+			if([othello currentColor] == kSOBlack) {
+				CGContextDrawImage(ctx, rect, hintImage);
+			}
+			else {
+				CGContextDrawImage(ctx, rect, hintWhiteImage);
+			}
 		}
 	}
 }
@@ -343,6 +371,10 @@
 
 - (void)setPlaySound:(BOOL)sound {
 	playSound = sound;
+}
+
+- (void)setMultitouchGestures:(BOOL)gestures {
+	multitouchGestures = gestures;
 }
 
 - (void)undoMove {

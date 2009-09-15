@@ -369,7 +369,13 @@
          break;
    }
 
-   LookAheadDepth = Difficulty + 3;
+   // LookAheadDepth can't be deeper than 5, otherwise the program can crash for running out of the memory
+   if (Difficulty < 3) {
+      LookAheadDepth = Difficulty + 3;
+   }
+   else {
+      LookAheadDepth = Difficulty + 2;
+   }
 	
    // Near the end of the game, when there are relatively few moves
    // left, set the look-ahead depth to do an exhaustive search. ??? not support options yet

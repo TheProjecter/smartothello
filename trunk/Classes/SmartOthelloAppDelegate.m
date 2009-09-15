@@ -45,6 +45,10 @@
 		NSNumber *defaultShakeToRestart = [NSNumber numberWithBool:YES];
         NSDictionary *resourceShakeToRestartDict = [NSDictionary dictionaryWithObject:defaultShakeToRestart forKey:SmartOthelloShakeToRestartKey];
 		[[NSUserDefaults standardUserDefaults] registerDefaults:resourceShakeToRestartDict];
+		
+		NSNumber *defaultMultitouchGestures = [NSNumber numberWithBool:YES];
+        NSDictionary *resourceMultitouchGesturesDict = [NSDictionary dictionaryWithObject:defaultMultitouchGestures forKey:SmartOthelloMultitouchGesturesKey];
+		[[NSUserDefaults standardUserDefaults] registerDefaults:resourceMultitouchGesturesDict];
     }
 }
 
