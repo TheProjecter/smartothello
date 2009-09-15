@@ -19,9 +19,11 @@
 	CGImageRef whiteLastImage;
 	CGImageRef blackLastImage;
 	CGImageRef hintImage;
+	CGImageRef hintWhiteImage;
 	SmartOthelloController *othello;
 	BOOL showPossibleMoves;
 	BOOL playSound;
+	BOOL multitouchGestures;
 	SystemSoundID soundID;
 	UILabel *labelBlackCount;
 	UILabel *labelWhiteCount;
@@ -45,6 +47,7 @@
 - (void)setWhitePlayer:(int)player;
 - (void)setShowPossibleMoves:(BOOL)show;
 - (void)setPlaySound:(BOOL)sound;
+- (void)setMultitouchGestures:(BOOL)gestures;
 - (void)undoMove;
 - (void)redoMove;
 - (void)setLabelBlackCount:(UILabel *)label;

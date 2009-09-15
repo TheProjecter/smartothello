@@ -17,6 +17,7 @@
 	BOOL showPossibleMoves;
 	BOOL playSound;
 	BOOL shakeToRestart;
+	BOOL multitouchGestures;
 	IBOutlet UILabel *labelBlackCount;
 	IBOutlet UILabel *labelWhiteCount;
 	IBOutlet UILabel *labelGameStatus;
@@ -35,6 +36,7 @@
 @property BOOL showPossibleMoves;
 @property BOOL playSound;
 @property BOOL shakeToRestart;
+@property BOOL multitouchGestures;
 @property (nonatomic, retain) UILabel *labelBlackCount;
 @property (nonatomic, retain) UILabel *labelWhiteCount;
 @property (nonatomic, retain) UILabel *labelGameStatus;

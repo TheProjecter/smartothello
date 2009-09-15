@@ -18,6 +18,7 @@
 @synthesize showPossibleMovesSwitch;
 @synthesize playSoundSwitch;
 @synthesize shakeToRestartSwitch;
+@synthesize multitouchGesturesSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -36,6 +37,7 @@
 	[defaults setBool:showPossibleMovesSwitch.on forKey:SmartOthelloShowPossibleMovesKey];
 	[defaults setBool:playSoundSwitch.on forKey:SmartOthelloPlaySoundKey];
 	[defaults setBool:shakeToRestartSwitch.on forKey:SmartOthelloShakeToRestartKey];
+	[defaults setBool:multitouchGesturesSwitch.on forKey:SmartOthelloMultitouchGesturesKey];
 	[super viewWillDisappear:animated];
 }
 
@@ -80,6 +82,7 @@
 	showPossibleMovesSwitch.on = [defaults boolForKey:SmartOthelloShowPossibleMovesKey];
 	playSoundSwitch.on = [defaults boolForKey:SmartOthelloPlaySoundKey];
 	shakeToRestartSwitch.on = [defaults boolForKey:SmartOthelloShakeToRestartKey];
+	multitouchGesturesSwitch.on = [defaults boolForKey:SmartOthelloMultitouchGesturesKey];
 }
 
 
@@ -104,6 +107,7 @@
 	[showPossibleMovesSwitch release];
 	[playSoundSwitch release];
 	[shakeToRestartSwitch release];
+	[multitouchGesturesSwitch release];
     [super dealloc];
 }
 

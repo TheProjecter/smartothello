@@ -17,6 +17,7 @@
 	IBOutlet UISwitch *showPossibleMovesSwitch;
 	IBOutlet UISwitch *playSoundSwitch;
 	IBOutlet UISwitch *shakeToRestartSwitch;
+	IBOutlet UISwitch *multitouchGesturesSwitch;
 }
 @property (nonatomic,assign) id <MyFlipControllerDelegate> flipDelegate;
 @property (nonatomic, retain) UISegmentedControl *skllLevelSegmentControl;
@@ -25,6 +26,7 @@
 @property (nonatomic, retain) UISwitch *showPossibleMovesSwitch;
 @property (nonatomic, retain) UISwitch *playSoundSwitch;
 @property (nonatomic, retain) UISwitch *shakeToRestartSwitch;
+@property (nonatomic, retain) UISwitch *multitouchGesturesSwitch;
 
 - (IBAction)toggleView:(id)sender;
 @end

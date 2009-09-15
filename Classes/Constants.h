@@ -15,6 +15,7 @@
 #define SmartOthelloShowPossibleMovesKey @"SmartOthelloShowPossibleMovesKey"
 #define SmartOthelloPlaySoundKey         @"SmartOthelloPlaySoundKey"
 #define SmartOthelloShakeToRestartKey    @"SmartOthelloShakeToRestartKey"
+#define SmartOthelloMultitouchGesturesKey    @"SmartOthelloMultitouchGesturesKey"
 
 // Define the players.
 #define PlayerHuman    0
