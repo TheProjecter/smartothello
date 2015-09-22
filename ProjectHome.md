@@ -1,0 +1,1 @@
+Smart Othello is a classical Othello (Reversi) game running on iPhone or iPod Touch. We build this just for fun. This program will fully use MVC design pattern, Core-Animation, Accelerometer and other cool features in iPhone OS. Smart Othello also leverage the advanced AI algorithm so it's not easy to beat it.
